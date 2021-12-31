@@ -38,8 +38,6 @@ inoremap <silent> <expr> <CR> NewlineWithIndent()
 
 autocmd! BufNewFile,BufRead !*.go,!*.md,!*.txt inoremap ' ''<LEFT>
 
-autocmd! BufNewFile,BufRead !*.md,!*.txt packadd asyncomplete.vim asyncomplete-lsp.vim
-autocmd! BufNewFile,BufRead *.md,*.txt packadd coc.nvim
 autocmd! BufNewFile,BufRead *.go packadd vim-goimports
 
 set autoindent
