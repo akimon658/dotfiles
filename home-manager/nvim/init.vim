@@ -20,14 +20,7 @@ inoremap " ""<LEFT>
 inoremap ` ``<LEFT>
 
 function! NewlineWithIndent()
-	let nlCharacter = '\n'
-	if &fileformat == 'dos'
-		let nlCharacter = '\r\n'
-	elseif &fileformat == 'mac'
-		let nlCharacter = '\r'
-	endif
-
-	let nlAndIndent = nlCharacter + "\t" + nlCharacter + "\<UP>\<END>"
+	let nlAndIndent = "\n\t\n\<UP>\<END>"
 	let open = getline(".")[col(".")-2]
 	let close = getline(".")[col(".")-1]
 
@@ -38,7 +31,7 @@ function! NewlineWithIndent()
 	elseif close == "]" && open == "["
 		return nlAndIndent
 	else
-		return nlCharacter
+		return "\n"
 	endif
 endfunction
 inoremap <silent> <expr> <CR> NewlineWithIndent()
