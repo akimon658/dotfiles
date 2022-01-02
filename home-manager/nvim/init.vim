@@ -47,6 +47,10 @@ set number
 set shiftwidth=4
 set showmatch
 set splitright
+
+let encode = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
+set statusline=%f%m%=%{encode[&fileformat]}\ [%l\ %c\ %P]
+
 set tabstop=4
 
 autocmd! BufNewFile,BufRead *.json set filetype=jsonc
