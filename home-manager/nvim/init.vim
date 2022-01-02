@@ -19,7 +19,14 @@ inoremap < <><LEFT>
 inoremap " ""<LEFT>
 
 function! NewlineWithIndent()
-	let nlAndIndent = "\n\t\n\<UP>\<END>"
+	let nlCharacter = '\n'
+	if &fileformat == 'dos'
+		let nlCharacter = '\r\n'
+	elseif &fileformat == 'mac'
+		let nlCharacter = '\r'
+	endif
+
+	let nlAndIndent = nlCharacter + "\t" + nlCharacter + "\<UP>\<END>"
 	let open = getline(".")[col(".")-2]
 	let close = getline(".")[col(".")-1]
 
@@ -30,7 +37,7 @@ function! NewlineWithIndent()
 	elseif close == "]" && open == "["
 		return nlAndIndent
 	else
-		return "\n"
+		return nlCharacter
 	endif
 endfunction
 inoremap <silent> <expr> <CR> NewlineWithIndent()
@@ -50,6 +57,10 @@ set number
 set shiftwidth=4
 set showmatch
 set splitright
+
+let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
+set statusline=%f%m%=%{eol[&fileformat]}\ [%l\ %c\ %P]
+
 set tabstop=4
 
 autocmd! BufNewFile,BufRead *.json set filetype=jsonc
