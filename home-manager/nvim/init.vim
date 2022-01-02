@@ -17,7 +17,6 @@ inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap < <><LEFT>
 inoremap " ""<LEFT>
-inoremap ` ``<LEFT>
 
 function! NewlineWithIndent()
 	let nlAndIndent = "\n\t\n\<UP>\<END>"
@@ -36,7 +35,11 @@ function! NewlineWithIndent()
 endfunction
 inoremap <silent> <expr> <CR> NewlineWithIndent()
 
-autocmd! BufNewFile,BufRead !*.go,!*.md,!*.txt inoremap ' ''<LEFT>
+augroup quote
+	autocmd!
+	autocmd BufNewFile,BufRead !*.go,!*.md,!*.txt inoremap ' ''<LEFT>
+	autocmd BufNewFile,BufRead *.go inoremap ` ``<LEFT>
+augroup end
 
 autocmd! BufNewFile,BufRead *.go packadd vim-goimports
 
