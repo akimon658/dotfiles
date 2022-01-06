@@ -1,5 +1,6 @@
 colorscheme slate
 
+hi Comment ctermfg=244
 hi LineNr ctermfg=240
 hi LspErrorVirtualText ctermbg=9
 hi ModeMsg ctermfg=248
