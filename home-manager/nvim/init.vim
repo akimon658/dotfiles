@@ -1,5 +1,7 @@
 colorscheme slate
 
+filetype on
+
 hi Comment ctermfg=244
 hi LineNr ctermfg=240
 hi LspErrorVirtualText ctermbg=9
@@ -16,7 +18,6 @@ hi Underlined ctermfg=6
 inoremap ( ()<LEFT>
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
-inoremap < <><LEFT>
 inoremap " ""<LEFT>
 
 function! NewlineWithIndent()
@@ -36,13 +37,14 @@ function! NewlineWithIndent()
 endfunction
 inoremap <silent> <expr> <CR> NewlineWithIndent()
 
-augroup quote
+augroup pair
 	autocmd!
-	autocmd BufNewFile,BufRead !*.go,!*.md,!*.txt inoremap ' ''<LEFT>
-	autocmd BufNewFile,BufRead *.go inoremap ` ``<LEFT>
+	autocmd FileType !go,!markdown,!text inoremap ' ''<LEFT>
+	autocmd FileType html inoremap < <><LEFT>
+	autocmd FileType go inoremap ` ``<LEFT>
 augroup end
 
-autocmd! BufNewFile,BufRead *.go packadd vim-goimports
+autocmd! FileType go packadd vim-goimports
 
 set autoindent
 set lcs=eol:↲,tab:>_,trail:･
@@ -57,7 +59,7 @@ set statusline=%f%m%=%{eol[&fileformat]}\ [%l\ %c\ %P]
 
 set tabstop=4
 
-autocmd! BufNewFile,BufRead *.json set filetype=jsonc
+autocmd!  json set filetype=jsonc
 
 syntax on
 
