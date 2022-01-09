@@ -59,7 +59,7 @@ set statusline=%f%m%=%{eol[&fileformat]}\ [%l\ %c\ %P]
 
 set tabstop=4
 
-autocmd!  json set filetype=jsonc
+autocmd! Filetype json set filetype=jsonc
 
 syntax on
 
