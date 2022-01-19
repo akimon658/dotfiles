@@ -39,10 +39,10 @@ inoremap <silent> <expr> <CR> NewlineWithIndent()
 
 augroup pair
 	autocmd!
-	autocmd FileType !go,!markdown,!text inoremap ' ''<LEFT>
 	autocmd FileType html inoremap < <><LEFT>
 	autocmd FileType go inoremap ` ``<LEFT>
-augroup end
+	autocmd FileType typescript inoremap ' '' <LEFT>
+augroup END
 
 autocmd! FileType go packadd vim-goimports
 
@@ -50,6 +50,12 @@ set autoindent
 set lcs=eol:↲,tab:>_,trail:･
 set list
 set number
+
+augroup wrapping
+	autocmd!
+	autocmd FileType typescript set nowrap
+augroup END
+
 set shiftwidth=4
 set showmatch
 set splitright
