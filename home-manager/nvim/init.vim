@@ -41,7 +41,7 @@ augroup pair
 	autocmd!
 	autocmd FileType html inoremap < <><LEFT>
 	autocmd FileType go inoremap ` ``<LEFT>
-	autocmd FileType typescript inoremap ' '' <LEFT>
+	autocmd FileType typescript inoremap ' ''<LEFT>
 augroup END
 
 autocmd! FileType go packadd vim-goimports
