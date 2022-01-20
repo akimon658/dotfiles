@@ -44,6 +44,8 @@ augroup pair
 	autocmd FileType typescript inoremap ' ''<LEFT>
 augroup END
 
+let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
+
 autocmd! FileType go packadd vim-goimports
 
 set autoindent
