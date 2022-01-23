@@ -41,6 +41,7 @@ augroup pair
 	autocmd!
 	autocmd FileType html inoremap < <><LEFT>
 	autocmd FileType go inoremap ` ``<LEFT>
+	autocmd FileType scss inoremap ' ''<LEFT>
 	autocmd FileType typescript inoremap ' ''<LEFT>
 augroup END
 
