@@ -25,11 +25,7 @@ function! NewlineWithIndent()
 	let open = getline(".")[col(".")-2]
 	let close = getline(".")[col(".")-1]
 
-	if close == "}" && open == "{"
-		return nlAndIndent
-	elseif close == ")" && open == "("
-		return nlAndIndent
-	elseif close == "]" && open == "["
+	if (open == "{" && close == "}") || (open == "(" && close == ")") || (open == "[" && close == "]")
 		return nlAndIndent
 	else
 		return "\n"
