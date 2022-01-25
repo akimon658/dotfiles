@@ -20,18 +20,18 @@ inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap " ""<LEFT>
 
-function! NewlineWithIndent()
-	let nlAndIndent = "\n\t\n\<UP>\<END>"
+function! NewlineInBrackets()
+	let nlInBrackets = "\<CR>\<ESC>\<S-o>"
 	let open = getline(".")[col(".")-2]
 	let close = getline(".")[col(".")-1]
 
 	if (open == "{" && close == "}") || (open == "(" && close == ")") || (open == "[" && close == "]")
-		return nlAndIndent
+		return nlInBrackets
 	else
-		return "\n"
+		return "\<CR>"
 	endif
 endfunction
-inoremap <silent> <expr> <CR> NewlineWithIndent()
+inoremap <silent> <expr> <CR> NewlineInBrackets()
 
 augroup pair
 	autocmd!
@@ -57,6 +57,7 @@ augroup END
 
 set shiftwidth=4
 set showmatch
+set smartindent
 set splitright
 
 let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
