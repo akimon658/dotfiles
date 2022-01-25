@@ -70,6 +70,12 @@ set tabstop=4
 
 autocmd! Filetype json set filetype=jsonc
 
+augroup spell_check
+	autocmd!
+	autocmd FileType markdown,text set spell
+	autocmd FileType markdown,text set spelllang=en_us,cjk
+augroup END
+
 syntax on
 
 tnoremap <silent> <Esc> <C-\><C-n>
