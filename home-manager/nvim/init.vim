@@ -46,6 +46,7 @@ let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
 autocmd! FileType go packadd vim-goimports
 
 set autoindent
+set clipboard+=unnamedplus
 set lcs=eol:↲,tab:>_,trail:･
 set list
 set number
