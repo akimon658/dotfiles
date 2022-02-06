@@ -43,6 +43,8 @@ augroup END
 
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
 
+nnoremap d "_d
+
 autocmd! FileType go packadd vim-goimports
 
 set autoindent
