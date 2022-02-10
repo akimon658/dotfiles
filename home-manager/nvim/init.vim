@@ -35,7 +35,6 @@ inoremap <silent> <expr> <CR> NewlineInBrackets()
 
 augroup pair
 	autocmd!
-	autocmd FileType html inoremap < <><LEFT>
 	autocmd FileType go inoremap ` ``<LEFT>
 	autocmd FileType scss inoremap ' ''<LEFT>
 	autocmd FileType typescript inoremap ' ''<LEFT>
@@ -45,7 +44,11 @@ let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
 
 nnoremap d "_d
 
-autocmd! FileType go packadd vim-goimports
+augroup plugins
+	autocmd!
+	autocmd FileType html packadd emmet-vim
+	autocmd FileType go packadd vim-goimports
+augroup END
 
 set autoindent
 set clipboard+=unnamedplus
