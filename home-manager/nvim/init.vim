@@ -21,15 +21,16 @@ inoremap [ []<LEFT>
 inoremap " ""<LEFT>
 
 function! NewlineInBrackets()
-	let nlInBrackets = "\<CR>\<ESC>\<S-o>"
 	let open = getline(".")[col(".")-2]
 	let close = getline(".")[col(".")-1]
 
+	let key = "\<CR>"
+
 	if (open == "{" && close == "}") || (open == "(" && close == ")") || (open == "[" && close == "]")
-		return nlInBrackets
-	else
-		return "\<CR>"
+		let key .= "\<ESC>\<S-o>"
 	endif
+
+	return key
 endfunction
 inoremap <silent> <expr> <CR> NewlineInBrackets()
 
