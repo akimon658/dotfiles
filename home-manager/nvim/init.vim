@@ -37,8 +37,7 @@ inoremap <silent> <expr> <CR> NewlineInBrackets()
 augroup pair
 	autocmd!
 	autocmd FileType go inoremap ` ``<LEFT>
-	autocmd FileType scss inoremap ' ''<LEFT>
-	autocmd FileType typescript inoremap ' ''<LEFT>
+	autocmd FileType python,scss,typescript inoremap ' ''<LEFT>
 augroup END
 
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
