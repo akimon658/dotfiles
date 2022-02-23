@@ -47,6 +47,7 @@ nnoremap d "_d
 augroup plugins
 	autocmd!
 	autocmd FileType html packadd emmet-vim
+	autocmd FileType css,scss packadd vim-css-color
 	autocmd FileType go packadd vim-goimports
 augroup END
 
