@@ -18,6 +18,7 @@ hi Underlined ctermfg=6
 inoremap ( ()<LEFT>
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
+inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
 
 function! NewlineInBrackets()
@@ -34,34 +35,14 @@ function! NewlineInBrackets()
 endfunction
 inoremap <silent> <expr> <CR> NewlineInBrackets()
 
-augroup pair
-	autocmd!
-	autocmd FileType go inoremap ` ``<LEFT>
-	autocmd FileType python,scss,typescript inoremap ' ''<LEFT>
-augroup END
-
-let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
-
 nnoremap d "_d
-
-augroup plugins
-	autocmd!
-	autocmd FileType html packadd emmet-vim
-	autocmd FileType css,scss packadd vim-css-color
-	autocmd FileType go packadd vim-goimports
-augroup END
 
 set autoindent
 set clipboard+=unnamedplus
 set lcs=eol:↲,tab:>_,trail:･
 set list
 set number
-
-augroup wrapping
-	autocmd!
-	autocmd FileType typescript set nowrap
-augroup END
-
+set nowrap
 set shiftwidth=4
 set showmatch
 set smartindent
@@ -71,14 +52,6 @@ let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
 set statusline=%f%m%=%{eol[&fileformat]}\ [%l\ %c\ %P]
 
 set tabstop=4
-
-autocmd! Filetype json set filetype=jsonc
-
-augroup spell_check
-	autocmd!
-	autocmd FileType markdown,text set spell
-	autocmd FileType markdown,text set spelllang=en_us,cjk
-augroup END
 
 syntax on
 
