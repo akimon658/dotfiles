@@ -42,7 +42,6 @@ set clipboard+=unnamedplus
 set lcs=eol:↲,tab:>_,trail:･
 set list
 set number
-set nowrap
 set shiftwidth=4
 set showmatch
 set smartindent
