@@ -5,6 +5,6 @@ augroup END
 
 inoremap <buffer> ` ``<LEFT>
 
-iunmap <buffer> '
+iunmap '
 
 packadd vim-goimports
