@@ -1,4 +1,4 @@
 augroup auto_format
 	autocmd!
-	autocmd BufWritePre *.py silent! execute "%!yapf --style google"
+	autocmd BufWritePre *.py FormatOnSave("%!yapf --style google")
 augroup END

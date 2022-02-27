@@ -2,6 +2,12 @@ colorscheme slate
 
 filetype on
 
+function! FormatOnSave(formatCommand)
+	let cursor = winsaveview()
+	silent! execute a:formatCommand
+	call winrestview(cursor)
+endfunction
+
 hi Comment ctermfg=244
 hi LineNr ctermfg=240
 hi LspErrorVirtualText ctermbg=9

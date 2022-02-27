@@ -1,6 +1,6 @@
 augroup go_format
 	autocmd!
-	autocmd BufWritePre *.go silent! execute "%!gofmt -s"
+	autocmd BufWritePre *.go call FormatOnSave("%!gofmt -s")
 augroup END
 
 inoremap <buffer> ` ``<LEFT>
