@@ -1,5 +1,5 @@
-inoremap ` ``<LEFT>
+inoremap <buffer> ` ``<LEFT>
 
-iunmap '
+iunmap <buffer> '
 
 packadd vim-goimports
