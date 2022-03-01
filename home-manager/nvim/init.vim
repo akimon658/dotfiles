@@ -61,3 +61,5 @@ set tabstop=4
 syntax on
 
 tnoremap <silent> <Esc> <C-\><C-n>
+
+vnoremap d "_d
