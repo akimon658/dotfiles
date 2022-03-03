@@ -41,6 +41,8 @@ function! NewlineInBrackets()
 endfunction
 inoremap <silent> <expr> <CR> NewlineInBrackets()
 
+let g:scrollview_column = 1
+
 nnoremap d "_d
 
 set autoindent
@@ -54,7 +56,7 @@ set smartindent
 set splitright
 
 let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
-set statusline=%f%m%=%{eol[&fileformat]}\ [%l\ %c\ %P]
+set statusline=%f%m%=%{eol[&fileformat]}
 
 set tabstop=4
 
