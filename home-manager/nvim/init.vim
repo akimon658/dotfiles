@@ -9,18 +9,18 @@ function! FormatOnSave(formatCommand)
 	call winrestview(cursor)
 endfunction
 
-hi Comment ctermfg=244
-hi LineNr ctermfg=240
-hi LspErrorVirtualText ctermbg=9
-hi ModeMsg ctermfg=248
-hi Nontext ctermfg=240
-hi Pmenu ctermbg=236 ctermfg=248
-hi PmenuSel ctermbg=240 ctermfg=255
-hi SpecialKey ctermfg=240
-hi StatusLine cterm=NONE ctermbg=12 ctermfg=252
-hi TabLine cterm=NONE ctermbg=238 ctermfg=248
-hi TabLineFill cterm=NONE ctermbg=238
-hi Underlined ctermfg=6
+highlight Comment ctermfg=244
+highlight LineNr ctermfg=240
+highlight LspErrorVirtualText ctermbg=9
+highlight ModeMsg ctermfg=248
+highlight Nontext ctermfg=240
+highlight Pmenu ctermbg=236 ctermfg=248
+highlight PmenuSel ctermbg=240 ctermfg=255
+highlight SpecialKey ctermfg=240
+highlight StatusLine cterm=NONE ctermbg=12 ctermfg=252
+highlight TabLine cterm=NONE ctermbg=238 ctermfg=248
+highlight TabLineFill cterm=NONE ctermbg=238
+highlight Underlined ctermfg=6
 
 inoremap ( ()<LEFT>
 inoremap { {}<LEFT>
