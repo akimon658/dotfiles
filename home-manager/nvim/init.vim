@@ -1,6 +1,7 @@
 colorscheme slate
 
 filetype on
+filetype plugin indent on
 
 function! FormatOnSave(formatCommand)
 	let cursor = winsaveview()
@@ -52,7 +53,6 @@ set list
 set number
 set shiftwidth=4
 set showmatch
-set smartindent
 set splitright
 
 let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
