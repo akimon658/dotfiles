@@ -56,7 +56,7 @@ set showmatch
 set splitright
 
 let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
-set statusline=%f%m%=%{eol[&fileformat]}
+set statusline=%f%m\ (%{gitbranch#name()})%=%{eol[&fileformat]}
 
 set tabstop=4
 
