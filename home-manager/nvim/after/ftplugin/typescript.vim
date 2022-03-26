@@ -1,4 +1,4 @@
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'deno']
 
-set expandtab
-set shiftwidth=2
+setlocal expandtab
+setlocal shiftwidth=2

@@ -2,5 +2,5 @@ let g:lsp_settings_filetype_typescriptreact = ['typescript-language-server', 'de
 
 packadd emmet-vim
 
-set expandtab
-set shiftwidth=2
+setlocal expandtab
+setlocal shiftwidth=2
