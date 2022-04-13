@@ -11,7 +11,6 @@ endfunction
 
 highlight Comment ctermfg=244
 highlight LineNr ctermfg=240
-highlight LspErrorVirtualText ctermbg=9
 highlight ModeMsg ctermfg=248
 highlight Nontext ctermfg=240
 highlight Pmenu ctermbg=236 ctermfg=248
@@ -43,6 +42,8 @@ endfunction
 inoremap <silent> <expr> <CR> NewlineInBrackets()
 
 let g:scrollview_column = 1
+
+lua require('config')
 
 nnoremap d "_d
 
