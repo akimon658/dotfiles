@@ -1,5 +1,3 @@
-colorscheme slate
-
 filetype on
 
 function! FormatOnSave(formatCommand)
@@ -7,18 +5,6 @@ function! FormatOnSave(formatCommand)
 	silent! execute a:formatCommand
 	call winrestview(cursor)
 endfunction
-
-highlight Comment ctermfg=244
-highlight LineNr ctermfg=240
-highlight ModeMsg ctermfg=248
-highlight Nontext ctermfg=240
-highlight Pmenu ctermbg=236 ctermfg=248
-highlight PmenuSel ctermbg=240 ctermfg=255
-highlight SpecialKey ctermfg=240
-highlight StatusLine cterm=NONE ctermbg=12 ctermfg=252
-highlight TabLine cterm=NONE ctermbg=238 ctermfg=248
-highlight TabLineFill cterm=NONE ctermbg=238
-highlight Underlined ctermfg=6
 
 inoremap ( ()<LEFT>
 inoremap { {}<LEFT>

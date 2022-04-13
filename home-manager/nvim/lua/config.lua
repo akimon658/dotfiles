@@ -19,3 +19,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
+vim.api.nvim_set_var('vscode_style', 'dark')
+vim.cmd('colorscheme vscode')
