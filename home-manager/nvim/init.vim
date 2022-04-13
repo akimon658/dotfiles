@@ -1,7 +1,6 @@
 colorscheme slate
 
 filetype on
-filetype plugin indent on
 
 function! FormatOnSave(formatCommand)
 	let cursor = winsaveview()
@@ -47,7 +46,6 @@ lua require('config')
 
 nnoremap d "_d
 
-set autoindent
 set clipboard+=unnamedplus
 set lcs=eol:↲,tab:>_,trail:･
 set list
@@ -64,8 +62,6 @@ let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
 set statusline=%f%m%{branch}%=%{eol[&fileformat]}
 
 set tabstop=4
-
-syntax on
 
 tnoremap <silent> <Esc> <C-\><C-n>
 
