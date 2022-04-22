@@ -6,26 +6,6 @@ function! FormatOnSave(formatCommand)
 	call winrestview(cursor)
 endfunction
 
-inoremap ( ()<LEFT>
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
-function! NewlineInBrackets()
-	let open = getline(".")[col(".")-2]
-	let close = getline(".")[col(".")-1]
-
-	let key = "\<CR>"
-
-	if (open == "{" && close == "}") || (open == "(" && close == ")") || (open == "[" && close == "]")
-		let key .= "\<ESC>\<S-o>"
-	endif
-
-	return key
-endfunction
-inoremap <silent> <expr> <CR> NewlineInBrackets()
-
 let g:scrollview_column = 1
 
 lua require('config')
