@@ -1,8 +1,20 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require('cmp').setup {
+local cmp = require('cmp')
+cmp.setup {
+  mapping = {
+    ['<Tab>'] = cmp.mapping.confirm {
+      select = true
+    }
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end
+  },
   sources = {
+    { name = 'luasnip' },
     { name = 'nvim_lsp' }
   }
 }
