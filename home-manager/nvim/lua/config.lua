@@ -1,5 +1,6 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local cmp = require('cmp')
 cmp.setup {
@@ -21,6 +22,7 @@ cmp.setup {
 
 LspConfig = require('lspconfig')
 local servers = {
+  'cssls',
   'denols',
   'gopls',
   'sumneko_lua'
