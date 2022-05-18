@@ -66,4 +66,6 @@ require('nvim-treesitter.configs').setup {
 
 vim.api.nvim_set_var('vscode_style', 'dark')
 vim.cmd('colorscheme vscode')
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
 vim.opt.wrap = false

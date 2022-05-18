@@ -13,7 +13,6 @@ lua require('config')
 set lcs=eol:↲,tab:>_,trail:･
 set list
 set relativenumber
-set shiftwidth=4
 set showmatch
 set splitright
 
