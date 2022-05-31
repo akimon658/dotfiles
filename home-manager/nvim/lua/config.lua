@@ -69,5 +69,7 @@ vim.cmd('colorscheme vscode')
 
 vim.keymap.set('n', '<C-p>', ':GFiles<CR>')
 vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
