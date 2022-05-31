@@ -67,6 +67,7 @@ require('nvim-treesitter.configs').setup {
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
 
+vim.keymap.set('n', '<C-p>', ':GFiles<CR>')
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
