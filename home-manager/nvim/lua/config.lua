@@ -57,6 +57,7 @@ for _, lsp in ipairs(servers) do
 end
 
 require('nvim-treesitter.configs').setup {
+  auto_install = true,
   highlight = {
     enable = true
   }
@@ -64,7 +65,6 @@ require('nvim-treesitter.configs').setup {
 
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-
 vim.keymap.set('n', '<C-p>', ':GFiles<CR>')
 vim.opt.expandtab = true
 vim.opt.number = true
