@@ -6,8 +6,6 @@ function! FormatOnSave(formatCommand)
 	call winrestview(cursor)
 endfunction
 
-let g:scrollview_column = 1
-
 lua require('config')
 
 set lcs=eol:↲,tab:>_,trail:･

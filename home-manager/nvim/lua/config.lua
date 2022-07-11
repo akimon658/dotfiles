@@ -63,6 +63,8 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
+vim.g.scrollview_character = '▎'
+vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
 vim.keymap.set('n', '<C-p>', ':GFiles<CR>')
