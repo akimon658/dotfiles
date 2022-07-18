@@ -44,12 +44,18 @@ cmp.setup {
 Capabilities = vim.lsp.protocol.make_client_capabilities()
 Capabilities = require('cmp_nvim_lsp').update_capabilities(Capabilities)
 Capabilities.textDocument.completion.completionItem.snippetSupport = true
-LspConfig = require('lspconfig')
+
+local tsserver = 'tsserver'
+if vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1 then
+  tsserver = 'denols'
+end
 local servers = {
   'cssls',
   'gopls',
-  'tsserver'
+  tsserver
 }
+
+LspConfig = require('lspconfig')
 for _, lsp in ipairs(servers) do
   LspConfig[lsp].setup {
     capabilities = Capabilities
