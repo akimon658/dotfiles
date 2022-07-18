@@ -45,10 +45,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local tsserver = 'tsserver'
-if vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1 then
-  tsserver = 'denols'
-end
+UseDeno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
+local tsserver = UseDeno and 'denols' or 'tsserver'
+
 local servers = {
   'cssls',
   'gopls',
