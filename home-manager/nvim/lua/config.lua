@@ -41,9 +41,9 @@ cmp.setup {
   }
 }
 
-Capabilities = vim.lsp.protocol.make_client_capabilities()
-Capabilities = require('cmp_nvim_lsp').update_capabilities(Capabilities)
-Capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local tsserver = 'tsserver'
 if vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1 then
@@ -52,13 +52,21 @@ end
 local servers = {
   'cssls',
   'gopls',
+  'sumneko_lua',
   tsserver
 }
 
 LspConfig = require('lspconfig')
 for _, lsp in ipairs(servers) do
   LspConfig[lsp].setup {
-    capabilities = Capabilities
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        }
+      }
+    }
   }
 end
 
