@@ -1,3 +1,2 @@
+require('ftbase.html')
 require('ftbase.typescript')
-
-vim.cmd('packadd emmet-vim')
