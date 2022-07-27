@@ -80,7 +80,7 @@ vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-vim.keymap.set('n', '<C-p>', ':GFiles<CR>')
+vim.keymap.set('n', '<C-p>', '<Cmd>GFiles<CR>')
 vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
