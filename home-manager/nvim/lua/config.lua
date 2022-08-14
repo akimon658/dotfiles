@@ -51,6 +51,7 @@ local tsserver = UseDeno and 'denols' or 'tsserver'
 local servers = {
   'cssls',
   'gopls',
+  'pylsp',
   'sumneko_lua',
   tsserver
 }
