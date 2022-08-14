@@ -21,5 +21,3 @@ let eol = {'dos': 'CRLF', 'unix': 'LF', 'mac': 'CR'}
 set statusline=%f%m%{branch}%=%{eol[&fileformat]}
 
 set tabstop=4
-
-tnoremap <silent> <Esc> <C-\><C-n>
