@@ -1,11 +1,5 @@
 filetype on
 
-function! FormatOnSave(formatCommand)
-	let cursor = winsaveview()
-	silent! execute a:formatCommand
-	call winrestview(cursor)
-endfunction
-
 lua require('config')
 
 set lcs=eol:↲,tab:>_,trail:･

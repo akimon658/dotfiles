@@ -2,8 +2,9 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local function has_words_before()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match('%s') == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
+
 cmp.setup {
   mapping = {
     ['<C-n>'] = cmp.mapping(function(fallback)
@@ -77,6 +78,13 @@ require('nvim-treesitter.configs').setup {
     enable = true
   }
 }
+
+local id = vim.api.nvim_create_augroup('fmt', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = id,
+  pattern = { '*' },
+  command = 'lua vim.lsp.buf.formatting_sync()'
+})
 
 vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
