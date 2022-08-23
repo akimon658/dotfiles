@@ -71,6 +71,10 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+LspConfig.powershell_es.setup {
+  bundle_path = 'C:/PowerShellEditorServices',
+  capabilities = capabilities
+}
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
