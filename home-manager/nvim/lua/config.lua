@@ -50,6 +50,7 @@ UseDeno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
 local tsserver = UseDeno and 'denols' or 'tsserver'
 
 local servers = {
+  'bashls',
   'clangd',
   'cssls',
   'gopls',
