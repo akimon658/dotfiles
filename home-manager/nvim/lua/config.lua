@@ -102,3 +102,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 vim.opt.wrap = false
+
+if vim.fn.has('win64') == 1 then
+  vim.opt.shell = 'pwsh -NoLogo'
+  vim.opt.shellcmdflag = '-Command'
+  vim.opt.shellxquote = ''
+end
