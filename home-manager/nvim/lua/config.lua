@@ -1,6 +1,7 @@
 local builtin = require('telescope.builtin')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lsp_config = require('lspconfig')
 
 local function has_words_before()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -60,9 +61,8 @@ local servers = {
   tsserver
 }
 
-LspConfig = require('lspconfig')
 for _, lsp in ipairs(servers) do
-  LspConfig[lsp].setup {
+  lsp_config[lsp].setup {
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -73,7 +73,8 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-LspConfig.powershell_es.setup {
+
+lsp_config.powershell_es.setup {
   bundle_path = 'C:/PowerShellEditorServices',
   capabilities = capabilities
 }
