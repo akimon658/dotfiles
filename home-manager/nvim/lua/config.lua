@@ -1,5 +1,7 @@
+local builtin = require('telescope.builtin')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+
 local function has_words_before()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -112,8 +114,9 @@ vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files)
+vim.keymap.set('n', '<C-f>', builtin.live_grep)
 vim.keymap.set('n', '<C-g>', require('lazygit').lazygit)
+vim.keymap.set('n', '<C-p>', builtin.git_files)
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.number = true
