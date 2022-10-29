@@ -3,6 +3,7 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lsp_config = require('lspconfig')
 
+---@return boolean
 local function has_words_before()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -48,9 +49,12 @@ cmp.setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+---@type boolean
 local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
+---@type string
 local tsserver = use_deno and 'denols' or 'tsserver'
 
+---@type string[]
 local servers = {
   'bashls',
   'clangd',
@@ -87,6 +91,17 @@ require('nvim-treesitter.configs').setup {
 }
 
 local pattern_any = { '*' }
+
+---@class AutoCmdConfig
+---@field group any
+---@field pattern string[]
+---@field command string
+
+---@class AutoCmd
+---@field event string
+---@field config AutoCmdConfig
+
+---@type AutoCmd[]
 local autocmds = {
   {
     event = 'BufWritePre',
