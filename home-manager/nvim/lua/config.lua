@@ -48,8 +48,8 @@ cmp.setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-UseDeno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
-local tsserver = UseDeno and 'denols' or 'tsserver'
+local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
+local tsserver = use_deno and 'denols' or 'tsserver'
 
 local servers = {
   'bashls',
