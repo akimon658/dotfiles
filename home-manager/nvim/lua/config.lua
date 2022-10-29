@@ -107,12 +107,13 @@ for _, autocmd in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
+vim.g.lazygit_floating_window_use_plenary = 1
 vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files)
-vim.keymap.set('n', '<C-g>', '<Cmd>LazyGit<CR>')
+vim.keymap.set('n', '<C-g>', require('lazygit').lazygit)
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.number = true
