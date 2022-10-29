@@ -130,9 +130,35 @@ vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-vim.keymap.set('n', '<C-f>', builtin.live_grep)
-vim.keymap.set('n', '<C-g>', require('lazygit').lazygit)
-vim.keymap.set('n', '<C-p>', builtin.git_files)
+
+---@class Keymap
+---@field mode string
+---@field key string
+---@field action function
+
+---@type Keymap[]
+local keymaps = {
+  {
+    mode = 'n',
+    key = '<C-f>',
+    action = builtin.live_grep
+  },
+  {
+    mode = 'n',
+    key = '<C-g>',
+    action = require('lazygit').lazygit
+  },
+  {
+    mode = 'n',
+    key = '<C-p>',
+    action = builtin.git_files
+  }
+}
+
+for _, map in ipairs(keymaps) do
+  vim.keymap.set(map.mode, map.key, map.action)
+end
+
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.number = true
