@@ -111,7 +111,7 @@ vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-vim.keymap.set('n', '<C-p>', '<Cmd>GFiles<CR>')
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files)
 vim.keymap.set('n', '<C-g>', '<Cmd>LazyGit<CR>')
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
