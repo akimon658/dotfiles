@@ -83,12 +83,29 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
-local id = vim.api.nvim_create_augroup('fmt', {})
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = id,
-  pattern = { '*' },
-  command = 'lua vim.lsp.buf.formatting_sync()'
-})
+local pattern_any = { '*' }
+local autocmds = {
+  {
+    event = 'BufWritePre',
+    config = {
+      group = vim.api.nvim_create_augroup('fmt', {}),
+      pattern = pattern_any,
+      command = 'lua vim.lsp.buf.formatting_sync()'
+    }
+  },
+  {
+    event = 'InsertLeave',
+    config = {
+      group = vim.api.nvim_create_augroup('disable_ime', {}),
+      pattern = pattern_any,
+      command = 'call system("zenhan.exe 0")'
+    }
+  }
+}
+
+for _, autocmd in ipairs(autocmds) do
+  vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
+end
 
 vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
