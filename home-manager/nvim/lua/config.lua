@@ -60,6 +60,7 @@ local servers = {
   'clangd',
   'cssls',
   'gopls',
+  'jsonls',
   'pylsp',
   'sumneko_lua',
   tsserver
