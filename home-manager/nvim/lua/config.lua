@@ -25,8 +25,8 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -59,10 +59,10 @@ local servers = {
   'bashls',
   'clangd',
   'cssls',
+  'lua_ls',
   'gopls',
   'jsonls',
   'pylsp',
-  'sumneko_lua',
   tsserver
 }
 
