@@ -1,3 +1,68 @@
+local lazypath = vim.fn.stdpath('data') .. 'lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Type definition from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
+---@class lazyPlugin
+---@field [1] string
+---@field dependencies string[]|lazyPlugin[]
+
+---@alias lazySpec string|lazyPlugin
+
+---@type lazySpec[]
+local plugins = {
+  'dstein64/nvim-scrollview',
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      {
+        'saadparwaiz1/cmp_luasnip',
+        dependencies = { 'L3MON4D3/LuaSnip' }
+      }
+    }
+  },
+  'itchyny/vim-gitbranch',
+  'jghauser/mkdir.nvim',
+  'jiangmiao/auto-pairs',
+  {
+    'kdheepak/lazygit.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  'Mofiqul/vscode.nvim',
+  'neovim/nvim-lspconfig',
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
+    }
+  },
+  'nvim-treesitter/nvim-treesitter',
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  }
+}
+
+local opts = {
+  defaults = {
+    version = '*'
+  }
+}
+
+require('lazy').setup(plugins, opts)
+
 local builtin = require('telescope.builtin')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -95,16 +160,16 @@ require('nvim-treesitter.install').prefer_git = false
 
 local pattern_any = { '*' }
 
----@class AutoCmdConfig
+---@class autoCmdConfig
 ---@field group any
 ---@field pattern string[]
 ---@field command string
 
----@class AutoCmd
+---@class autoCmd
 ---@field event string
----@field config AutoCmdConfig
+---@field config autoCmdConfig
 
----@type AutoCmd[]
+---@type autoCmd[]
 local autocmds = {
   {
     event = 'BufWritePre',
@@ -134,12 +199,12 @@ vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
 
----@class Keymap
+---@class keymap
 ---@field mode string
 ---@field key string
 ---@field action function
 
----@type Keymap[]
+---@type keymap[]
 local keymaps = {
   {
     mode = 'n',
