@@ -91,6 +91,8 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
+require('nvim-treesitter.install').prefer_git = false
+
 local pattern_any = { '*' }
 
 ---@class AutoCmdConfig
