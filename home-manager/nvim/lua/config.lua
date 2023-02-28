@@ -12,11 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local builtin = 'telescope.builtin'
+local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
 
 -- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
 
 ---@class lazyPlugin
 ---@field [1] string
+---@field config function
 ---@field dependencies lazySpec[]
 ---@field keys keymap[]
 
@@ -28,16 +30,69 @@ local builtin = 'telescope.builtin'
 
 ---@type lazySpec[]
 local plugins = {
-  'dstein64/nvim-scrollview',
+  {
+    'dstein64/nvim-scrollview',
+    config = function()
+      vim.g.scrollview_character = '▎'
+      vim.g.scrollview_column = 1
+    end
+  },
   {
     'hrsh7th/nvim-cmp',
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+      ---@return boolean
+      local function has_words_before()
+        local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+      end
+
+      cmp.setup {
+        mapping = {
+          ['<C-n>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ['<C-p>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable( -1) then
+              luasnip.jump( -1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ['<Tab>'] = cmp.mapping.confirm {
+            select = true
+          }
+        },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end
+        },
+        sources = {
+          { name = 'luasnip' },
+          { name = 'nvim_lsp' },
+          { name = 'nvim_lua' }
+        }
+      }
+    end,
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lua',
       {
         'saadparwaiz1/cmp_luasnip',
         dependencies = { 'L3MON4D3/LuaSnip' }
-      }
+      },
+      cmp_nvim_lsp
     }
   },
   'itchyny/vim-gitbranch',
@@ -45,6 +100,9 @@ local plugins = {
   'jiangmiao/auto-pairs',
   {
     'kdheepak/lazygit.nvim',
+    config = function()
+      vim.g.lazygit_floating_window_use_plenary = 1
+    end,
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = { {
       '<C-g>',
@@ -53,8 +111,58 @@ local plugins = {
       end
     } }
   },
-  'Mofiqul/vscode.nvim',
-  'neovim/nvim-lspconfig',
+  {
+    'Mofiqul/vscode.nvim',
+    config = function()
+      vim.g.vscode_transparent = 1
+      vim.cmd('colorscheme vscode')
+    end
+  },
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      local lsp_config = require('lspconfig')
+
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      ---@type boolean
+      local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
+      ---@type string
+      local tsserver = use_deno and 'denols' or 'tsserver'
+
+      ---@type string[]
+      local servers = {
+        'bashls',
+        'clangd',
+        'cssls',
+        'gopls',
+        'jsonls',
+        'pylsp',
+        'sumneko_lua',
+        tsserver
+      }
+
+      for _, lsp in ipairs(servers) do
+        lsp_config[lsp].setup {
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' }
+              }
+            }
+          }
+        }
+      end
+
+      lsp_config.powershell_es.setup {
+        bundle_path = 'C:/PowerShellEditorServices',
+        capabilities = capabilities
+      }
+    end,
+    dependencies = { cmp_nvim_lsp }
+  },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -77,7 +185,19 @@ local plugins = {
       }
     }
   },
-  'nvim-treesitter/nvim-treesitter',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        auto_install = true,
+        highlight = {
+          enable = true
+        }
+      }
+
+      require('nvim-treesitter.install').prefer_git = false
+    end
+  },
   {
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' }
@@ -91,101 +211,6 @@ local opts = {
 }
 
 require('lazy').setup(plugins, opts)
-
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-local lsp_config = require('lspconfig')
-
----@return boolean
-local function has_words_before()
-  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
-cmp.setup {
-  mapping = {
-    ['<C-n>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ['<C-p>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ['<Tab>'] = cmp.mapping.confirm {
-      select = true
-    }
-  },
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end
-  },
-  sources = {
-    { name = 'luasnip' },
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lua' }
-  }
-}
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
----@type boolean
-local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
----@type string
-local tsserver = use_deno and 'denols' or 'tsserver'
-
----@type string[]
-local servers = {
-  'bashls',
-  'clangd',
-  'cssls',
-  'gopls',
-  'jsonls',
-  'pylsp',
-  'sumneko_lua',
-  tsserver
-}
-
-for _, lsp in ipairs(servers) do
-  lsp_config[lsp].setup {
-    capabilities = capabilities,
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-        }
-      }
-    }
-  }
-end
-
-lsp_config.powershell_es.setup {
-  bundle_path = 'C:/PowerShellEditorServices',
-  capabilities = capabilities
-}
-
-require('nvim-treesitter.configs').setup {
-  auto_install = true,
-  highlight = {
-    enable = true
-  }
-}
-
-require('nvim-treesitter.install').prefer_git = false
 
 local pattern_any = { '*' }
 
@@ -224,11 +249,6 @@ for _, autocmd in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
-vim.g.lazygit_floating_window_use_plenary = 1
-vim.g.scrollview_character = '▎'
-vim.g.scrollview_column = 1
-vim.g.vscode_transparent = 1
-vim.cmd('colorscheme vscode')
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.number = true
