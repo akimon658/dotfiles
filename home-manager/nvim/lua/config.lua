@@ -165,7 +165,7 @@ local pattern_any = { '*' }
 ---@class autoCmdConfig
 ---@field group any
 ---@field pattern string[]
----@field command string
+---@field callback function
 
 ---@class autoCmd
 ---@field event string
@@ -178,7 +178,7 @@ local autocmds = {
     config = {
       group = vim.api.nvim_create_augroup('fmt', {}),
       pattern = pattern_any,
-      command = 'lua vim.lsp.buf.formatting_sync()'
+      callback = vim.lsp.buf.formatting_sync
     }
   },
   {
@@ -186,7 +186,9 @@ local autocmds = {
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
       pattern = pattern_any,
-      command = 'call system("zenhan.exe 0")'
+      callback = function()
+        vim.fn.system('zenhan.exe', '0')
+      end
     }
   }
 }
