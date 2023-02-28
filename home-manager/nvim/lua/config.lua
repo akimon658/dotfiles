@@ -11,10 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Type definition from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
+local builtin = 'telescope.builtin'
+
+-- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
+
 ---@class lazyPlugin
 ---@field [1] string
----@field dependencies string[]|lazyPlugin[]
+---@field dependencies lazySpec[]
+---@field keys keymap[]
+
+---@class keymap
+---@field [1] string
+---@field [2] function
 
 ---@alias lazySpec string|lazyPlugin
 
@@ -37,7 +45,13 @@ local plugins = {
   'jiangmiao/auto-pairs',
   {
     'kdheepak/lazygit.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = { {
+      '<C-g>',
+      function()
+        require('lazygit').lazygit()
+      end
+    } }
   },
   'Mofiqul/vscode.nvim',
   'neovim/nvim-lspconfig',
@@ -47,6 +61,20 @@ local plugins = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
       'nvim-treesitter/nvim-treesitter',
+    },
+    keys = {
+      {
+        '<C-f>',
+        function()
+          require(builtin).live_grep()
+        end
+      },
+      {
+        '<C-p>',
+        function()
+          require(builtin).git_files()
+        end
+      }
     }
   },
   'nvim-treesitter/nvim-treesitter',
@@ -64,7 +92,6 @@ local opts = {
 
 require('lazy').setup(plugins, opts)
 
-local builtin = require('telescope.builtin')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lsp_config = require('lspconfig')
@@ -202,35 +229,6 @@ vim.g.scrollview_character = '▎'
 vim.g.scrollview_column = 1
 vim.g.vscode_transparent = 1
 vim.cmd('colorscheme vscode')
-
----@class keymap
----@field mode string
----@field key string
----@field action function
-
----@type keymap[]
-local keymaps = {
-  {
-    mode = 'n',
-    key = '<C-f>',
-    action = builtin.live_grep
-  },
-  {
-    mode = 'n',
-    key = '<C-g>',
-    action = require('lazygit').lazygit
-  },
-  {
-    mode = 'n',
-    key = '<C-p>',
-    action = builtin.git_files
-  }
-}
-
-for _, map in ipairs(keymaps) do
-  vim.keymap.set(map.mode, map.key, map.action)
-end
-
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.number = true
