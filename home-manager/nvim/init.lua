@@ -263,9 +263,18 @@ end
 
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.listchars = {
+  eol = '↲',
+  tab = '>_',
+  trail = '･'
+}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
+vim.opt.showmatch = true
+vim.opt.splitright = true
+vim.opt.tabstop = 4
 vim.opt.wrap = false
 
 if vim.fn.has('win64') == 1 then
