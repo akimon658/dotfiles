@@ -272,7 +272,6 @@ vim.opt.listchars = {
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
-vim.opt.showmatch = true
 vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.wrap = false
