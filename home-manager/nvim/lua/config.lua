@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local builtin = 'telescope.builtin'
 local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
+local insert_enter = 'InsertEnter'
 
 -- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
 
@@ -20,6 +21,7 @@ local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
 ---@field [1] string
 ---@field config function
 ---@field dependencies lazySpec[]
+---@field event string
 ---@field keys keymap[]
 
 ---@class keymap
@@ -93,11 +95,18 @@ local plugins = {
         dependencies = { 'L3MON4D3/LuaSnip' }
       },
       cmp_nvim_lsp
-    }
+    },
+    event = insert_enter
   },
   'itchyny/vim-gitbranch',
-  'jghauser/mkdir.nvim',
-  'jiangmiao/auto-pairs',
+  {
+    'jghauser/mkdir.nvim',
+    event = 'BufNewFile'
+  },
+  {
+    'jiangmiao/auto-pairs',
+    event = insert_enter
+  },
   {
     'kdheepak/lazygit.nvim',
     config = function()
