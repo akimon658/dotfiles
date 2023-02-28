@@ -19,7 +19,7 @@ local insert_enter = 'InsertEnter'
 
 ---@class lazyPlugin
 ---@field [1] string
----@field config function
+---@field config function|true
 ---@field dependencies lazySpec[]
 ---@field event string
 ---@field keys keymap[]
@@ -98,7 +98,6 @@ local plugins = {
     },
     event = insert_enter
   },
-  'itchyny/vim-gitbranch',
   {
     'jghauser/mkdir.nvim',
     event = 'BufNewFile'
@@ -171,6 +170,10 @@ local plugins = {
       }
     end,
     dependencies = { cmp_nvim_lsp }
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = true
   },
   {
     'nvim-telescope/telescope.nvim',
