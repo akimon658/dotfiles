@@ -126,10 +126,10 @@ local servers = {
   'bashls',
   'clangd',
   'cssls',
-  'lua_ls',
   'gopls',
   'jsonls',
   'pylsp',
+  'sumneko_lua',
   tsserver
 }
 
