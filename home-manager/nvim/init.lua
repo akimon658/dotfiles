@@ -176,7 +176,10 @@ local plugins = {
   },
   {
     'nvim-lualine/lualine.nvim',
-    config = true
+    config = true,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    }
   },
   {
     'nvim-telescope/telescope.nvim',
