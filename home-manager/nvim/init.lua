@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local builtin = 'telescope.builtin'
 local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
+local buf_read_pre = 'BufReadPre'
 local insert_enter = 'InsertEnter'
 
 -- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
@@ -37,7 +38,8 @@ local plugins = {
     config = function()
       vim.g.scrollview_character = '▎'
       vim.g.scrollview_column = 1
-    end
+    end,
+    event = buf_read_pre
   },
   {
     'hrsh7th/nvim-cmp',
@@ -169,7 +171,8 @@ local plugins = {
         capabilities = capabilities
       }
     end,
-    dependencies = { cmp_nvim_lsp }
+    dependencies = { cmp_nvim_lsp },
+    event = buf_read_pre
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -208,11 +211,13 @@ local plugins = {
       }
 
       require('nvim-treesitter.install').prefer_git = false
-    end
+    end,
+    event = buf_read_pre
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = buf_read_pre
   }
 }
 
