@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local builtin = 'telescope.builtin'
 
+local buf_new_file = 'BufNewFile'
 local buf_read_pre = 'BufReadPre'
 local insert_enter = 'InsertEnter'
 
@@ -40,7 +41,7 @@ local treesitter = {
 ---@field [1] string
 ---@field config function|true
 ---@field dependencies lazySpec[]
----@field event string
+---@field event string|string[]
 ---@field keys keymap[]
 
 ---@class keymap
@@ -57,7 +58,10 @@ local plugins = {
       vim.g.scrollview_character = '▎'
       vim.g.scrollview_column = 1
     end,
-    event = buf_read_pre
+    event = {
+      buf_new_file,
+      buf_read_pre
+    }
   },
   {
     'hrsh7th/nvim-cmp',
@@ -120,11 +124,14 @@ local plugins = {
   },
   {
     'jghauser/mkdir.nvim',
-    event = 'BufNewFile'
+    event = buf_new_file
   },
   {
     'jiangmiao/auto-pairs',
-    event = 'BufReadPost'
+    event = {
+      'BufReadPost',
+      buf_new_file
+    }
   },
   {
     'kdheepak/lazygit.nvim',
@@ -190,7 +197,10 @@ local plugins = {
       }
     end,
     dependencies = { cmp_nvim_lsp },
-    event = buf_read_pre
+    event = {
+      buf_new_file,
+      buf_read_pre
+    }
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -242,7 +252,10 @@ local plugins = {
   {
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { treesitter },
-    event = buf_read_pre
+    event = {
+      buf_read_pre,
+      buf_new_file
+    }
   },
   treesitter
 }
