@@ -12,9 +12,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local builtin = 'telescope.builtin'
-local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
+
 local buf_read_pre = 'BufReadPre'
 local insert_enter = 'InsertEnter'
+
+local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
+local devicons = 'nvim-tree/nvim-web-devicons'
+local plenary = 'nvim-lua/plenary.nvim'
+local treesitter = {
+  'nvim-treesitter/nvim-treesitter',
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      auto_install = true,
+      highlight = {
+        enable = true
+      }
+    }
+
+    require('nvim-treesitter.install').prefer_git = false
+  end,
+  event = buf_read_pre
+}
 
 -- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
 
@@ -113,7 +131,7 @@ local plugins = {
     config = function()
       vim.g.lazygit_floating_window_use_plenary = 1
     end,
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { plenary },
     keys = { {
       '<C-g>',
       function()
@@ -177,16 +195,34 @@ local plugins = {
   {
     'nvim-lualine/lualine.nvim',
     config = true,
+    dependencies = { devicons }
+  },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    config = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+
+      require('neo-tree').setup({
+        close_if_last_window = true,
+        filesystem = { follow_current_file = true },
+        view = { relativenumber = true },
+        window = { width = 30 }
+      })
+
+      vim.cmd(':Neotree')
+    end,
     dependencies = {
-      'nvim-tree/nvim-web-devicons'
+      'MunifTanjim/nui.nvim',
+      devicons,
+      plenary
     }
   },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'nvim-treesitter/nvim-treesitter',
+      devicons,
+      plenary,
+      treesitter
     },
     keys = {
       {
@@ -204,24 +240,11 @@ local plugins = {
     }
   },
   {
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        auto_install = true,
-        highlight = {
-          enable = true
-        }
-      }
-
-      require('nvim-treesitter.install').prefer_git = false
-    end,
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { treesitter },
     event = buf_read_pre
   },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = buf_read_pre
-  }
+  treesitter
 }
 
 local opts = {
