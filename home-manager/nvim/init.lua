@@ -124,7 +124,7 @@ local plugins = {
   },
   {
     'jiangmiao/auto-pairs',
-    event = insert_enter
+    event = 'BufReadPost'
   },
   {
     'kdheepak/lazygit.nvim',
