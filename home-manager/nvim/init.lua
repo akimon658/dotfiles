@@ -17,11 +17,31 @@ local buf_new_file = 'BufNewFile'
 local buf_read_pre = 'BufReadPre'
 local insert_enter = 'InsertEnter'
 
+-- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
+
+---@class lazyPlugin
+---@field [1] string
+---@field build function
+---@field config function|true
+---@field dependencies lazySpec[]
+---@field event string|string[]
+---@field keys keymap[]
+
+---@class keymap
+---@field [1] string
+---@field [2] function
+
+---@alias lazySpec string|lazyPlugin
+
 local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
 local devicons = 'nvim-tree/nvim-web-devicons'
 local plenary = 'nvim-lua/plenary.nvim'
+---@type lazySpec
 local treesitter = {
   'nvim-treesitter/nvim-treesitter',
+  build = function()
+    require('nvim-treesitter.install').update({ with_sync = true })
+  end,
   config = function()
     require('nvim-treesitter.configs').setup {
       auto_install = true,
@@ -34,21 +54,6 @@ local treesitter = {
   end,
   event = buf_read_pre
 }
-
--- Type definitions from https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua
-
----@class lazyPlugin
----@field [1] string
----@field config function|true
----@field dependencies lazySpec[]
----@field event string|string[]
----@field keys keymap[]
-
----@class keymap
----@field [1] string
----@field [2] function
-
----@alias lazySpec string|lazyPlugin
 
 ---@type lazySpec[]
 local plugins = {
