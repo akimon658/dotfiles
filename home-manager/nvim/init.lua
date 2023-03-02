@@ -241,7 +241,7 @@ local plugins = {
       {
         '<C-f>',
         function()
-          require(builtin).live_grep()
+          require(builtin).current_buffer_fuzzy_find()
         end
       },
       {
