@@ -264,6 +264,7 @@ local plugins = {
 }
 
 local opts = {
+  checker = { enabled = true },
   defaults = {
     version = '*'
   }
