@@ -36,7 +36,7 @@ local insert_enter = 'InsertEnter'
 local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
 local devicons = 'nvim-tree/nvim-web-devicons'
 local plenary = 'nvim-lua/plenary.nvim'
----@type lazySpec
+---@type lazyPlugin
 local treesitter = {
   'nvim-treesitter/nvim-treesitter',
   build = function()
