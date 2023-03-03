@@ -80,6 +80,7 @@ local plugins = {
       end
 
       cmp.setup {
+        formatting = { format = require('lspkind').cmp_format() },
         mapping = {
           ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -119,6 +120,7 @@ local plugins = {
     end,
     dependencies = {
       'hrsh7th/cmp-nvim-lua',
+      'onsails/lspkind.nvim',
       {
         'saadparwaiz1/cmp_luasnip',
         dependencies = { 'L3MON4D3/LuaSnip' }
