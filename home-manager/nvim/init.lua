@@ -60,7 +60,7 @@ local plugins = {
   {
     'dstein64/nvim-scrollview',
     config = function()
-      vim.g.scrollview_character = '▎'
+      vim.api.nvim_set_hl(0, 'ScrollView', { link = 'TermCursor' })
       vim.g.scrollview_column = 1
     end,
     event = {
