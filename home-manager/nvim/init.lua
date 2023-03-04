@@ -302,6 +302,14 @@ local autocmds = {
     }
   },
   {
+    event = 'CursorHold',
+    config = {
+      group = vim.api.nvim_create_augroup('diagnostics_hover', {}),
+      pattern = pattern_any,
+      callback = vim.diagnostic.open_float
+    }
+  },
+  {
     event = 'InsertLeave',
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
@@ -317,6 +325,8 @@ for _, autocmd in ipairs(autocmds) do
   vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
+vim.diagnostic.config({ virtual_text = false })
+
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.list = true
@@ -326,6 +336,7 @@ vim.opt.listchars = {
   trail = '･'
 }
 vim.opt.number = true
+vim.opt.updatetime = 1000
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 vim.opt.splitright = true
