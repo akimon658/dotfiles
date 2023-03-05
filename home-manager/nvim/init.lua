@@ -280,8 +280,6 @@ local opts = {
 
 require('lazy').setup(plugins, opts)
 
-local pattern_any = { '*' }
-
 ---@class autoCmdConfig
 ---@field group any
 ---@field pattern string[]
@@ -297,7 +295,6 @@ local autocmds = {
     event = 'BufWritePre',
     config = {
       group = vim.api.nvim_create_augroup('fmt', {}),
-      pattern = pattern_any,
       callback = vim.lsp.buf.formatting_sync
     }
   },
@@ -305,7 +302,6 @@ local autocmds = {
     event = 'CursorHold',
     config = {
       group = vim.api.nvim_create_augroup('diagnostics_hover', {}),
-      pattern = pattern_any,
       callback = function()
         vim.diagnostic.open_float({ focusable = false })
       end
@@ -315,7 +311,6 @@ local autocmds = {
     event = 'InsertLeave',
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
-      pattern = pattern_any,
       callback = function()
         vim.fn.system('zenhan.exe', '0')
       end
@@ -324,6 +319,9 @@ local autocmds = {
 }
 
 for _, autocmd in ipairs(autocmds) do
+  if autocmd.config.pattern == nil then
+    autocmd.config.pattern = { '*' }
+  end
   vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
