@@ -144,13 +144,6 @@ local plugins = {
     event = buf_new_file
   },
   {
-    'jiangmiao/auto-pairs',
-    event = {
-      'BufReadPost',
-      buf_new_file
-    }
-  },
-  {
     'kdheepak/lazygit.nvim',
     config = function()
       vim.g.lazygit_floating_window_use_plenary = 1
@@ -290,6 +283,18 @@ local plugins = {
     dependencies = { treesitter },
     event = {
       buf_read_pre,
+      buf_new_file
+    }
+  },
+  {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup({
+        map_c_h = true
+      })
+    end,
+    event = {
+      'BufReadPost',
       buf_new_file
     }
   },
