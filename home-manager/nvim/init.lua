@@ -164,6 +164,21 @@ local plugins = {
     } }
   },
   {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup({
+        char = '|',
+        context_char = '|',
+        show_current_context = true
+      })
+    end,
+    dependencies = { treesitter },
+    event = {
+      buf_new_file,
+      buf_read_pre
+    }
+  },
+  {
     'Mofiqul/vscode.nvim',
     config = function()
       vim.g.vscode_transparent = 1
@@ -342,8 +357,8 @@ vim.opt.expandtab = true
 vim.opt.list = true
 vim.opt.listchars = {
   eol = '↲',
-  tab = '>_',
-  trail = '･'
+  space = '･',
+  tab = '  '
 }
 vim.opt.number = true
 vim.opt.updatetime = 1000
