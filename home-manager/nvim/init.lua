@@ -69,6 +69,16 @@ local plugins = {
     }
   },
   {
+    'folke/trouble.nvim',
+    dependencies = { devicons },
+    keys = { {
+      '<leader>m',
+      function()
+        require('trouble').toggle()
+      end
+    } }
+  },
+  {
     'hrsh7th/nvim-cmp',
     config = function()
       local cmp = require('cmp')
@@ -230,7 +240,7 @@ local plugins = {
         window = { width = 30 }
       })
 
-      vim.cmd(':Neotree')
+      require('neo-tree.command')._command()
     end,
     dependencies = {
       'MunifTanjim/nui.nvim',
