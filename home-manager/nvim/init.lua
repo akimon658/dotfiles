@@ -159,9 +159,14 @@ local plugins = {
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
+      local character = '┃'
+      local link_to_non_text = { link = 'NonText' }
+      vim.api.nvim_set_hl(0, 'IndentBlanklineChar', link_to_non_text)
+      vim.api.nvim_set_hl(0, 'IndentBlanklineContextChar', { fg = '#dcdcaa' })
+      vim.api.nvim_set_hl(0, 'IndentBlanklineSpaceChar', link_to_non_text)
       require('indent_blankline').setup({
-        char = '|',
-        context_char = '|',
+        char = character,
+        context_char = character,
         show_current_context = true
       })
     end,
