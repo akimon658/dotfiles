@@ -179,8 +179,9 @@ local plugins = {
   {
     'Mofiqul/vscode.nvim',
     config = function()
-      vim.g.vscode_transparent = 1
-      vim.cmd('colorscheme vscode')
+      local vscode = require('vscode')
+      vscode.setup({ transparent = true })
+      vscode.load()
     end
   },
   {
