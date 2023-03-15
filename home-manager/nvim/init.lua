@@ -253,14 +253,18 @@ local plugins = {
         view = { relativenumber = true },
         window = { width = 30 }
       })
-
-      require('neo-tree.command')._command()
     end,
     dependencies = {
       'MunifTanjim/nui.nvim',
       devicons,
       plenary
-    }
+    },
+    keys = { {
+      '<C-e>',
+      function()
+        require('neo-tree.command')._command('toggle')
+      end
+    } }
   },
   {
     'nvim-telescope/telescope.nvim',
