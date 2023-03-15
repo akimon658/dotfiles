@@ -285,14 +285,6 @@ local plugins = {
     }
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { treesitter },
-    event = {
-      buf_read_pre,
-      buf_new_file
-    }
-  },
-  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup({
