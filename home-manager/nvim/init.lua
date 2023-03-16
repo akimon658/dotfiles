@@ -374,6 +374,7 @@ vim.opt.number = true
 vim.opt.updatetime = 1000
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
+vim.opt.signcolumn = 'yes'
 vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.wrap = false
