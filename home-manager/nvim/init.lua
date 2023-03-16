@@ -33,9 +33,57 @@ local insert_enter = 'InsertEnter'
 
 ---@alias lazySpec string|lazyPlugin
 
-local cmp_nvim_lsp = 'hrsh7th/cmp-nvim-lsp'
 local devicons = 'nvim-tree/nvim-web-devicons'
 local plenary = 'nvim-lua/plenary.nvim'
+---@type lazyPlugin
+local lspconfig = {
+  'neovim/nvim-lspconfig',
+  config = function()
+    local lsp_config = require('lspconfig')
+
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    ---@type boolean
+    local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
+    ---@type string
+    local tsserver = use_deno and 'denols' or 'tsserver'
+
+    ---@type string[]
+    local servers = {
+      'bashls',
+      'clangd',
+      'cssls',
+      'gopls',
+      'jsonls',
+      'pylsp',
+      'sumneko_lua',
+      tsserver
+    }
+
+    for _, lsp in ipairs(servers) do
+      lsp_config[lsp].setup {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            }
+          }
+        }
+      }
+    end
+
+    lsp_config.powershell_es.setup {
+      bundle_path = 'C:/PowerShellEditorServices',
+      capabilities = capabilities
+    }
+  end,
+  event = {
+    buf_new_file,
+    buf_read_pre
+  }
+}
 ---@type lazyPlugin
 local treesitter = {
   'nvim-treesitter/nvim-treesitter',
@@ -92,7 +140,7 @@ local plugins = {
       cmp.setup {
         formatting = { format = require('lspkind').cmp_format() },
         mapping = {
-              ['<C-n>'] = cmp.mapping(function(fallback)
+          ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -103,7 +151,7 @@ local plugins = {
               fallback()
             end
           end, { "i", "s" }),
-              ['<C-p>'] = cmp.mapping(function(fallback)
+          ['<C-p>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -112,7 +160,7 @@ local plugins = {
               fallback()
             end
           end, { "i", "s" }),
-              ['<Tab>'] = cmp.mapping.confirm {
+          ['<Tab>'] = cmp.mapping.confirm {
             select = true
           }
         },
@@ -130,12 +178,15 @@ local plugins = {
     end,
     dependencies = {
       'hrsh7th/cmp-nvim-lua',
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        dependencies = { lspconfig }
+      },
       'onsails/lspkind.nvim',
       {
         'saadparwaiz1/cmp_luasnip',
         dependencies = { 'L3MON4D3/LuaSnip' }
       },
-      cmp_nvim_lsp
     },
     event = insert_enter
   },
@@ -183,55 +234,6 @@ local plugins = {
       vscode.setup({ transparent = true })
       vscode.load()
     end
-  },
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      local lsp_config = require('lspconfig')
-
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      ---@type boolean
-      local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. '/deno.json') == 1
-      ---@type string
-      local tsserver = use_deno and 'denols' or 'tsserver'
-
-      ---@type string[]
-      local servers = {
-        'bashls',
-        'clangd',
-        'cssls',
-        'gopls',
-        'jsonls',
-        'pylsp',
-        'sumneko_lua',
-        tsserver
-      }
-
-      for _, lsp in ipairs(servers) do
-        lsp_config[lsp].setup {
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { 'vim' }
-              }
-            }
-          }
-        }
-      end
-
-      lsp_config.powershell_es.setup {
-        bundle_path = 'C:/PowerShellEditorServices',
-        capabilities = capabilities
-      }
-    end,
-    dependencies = { cmp_nvim_lsp },
-    event = {
-      buf_new_file,
-      buf_read_pre
-    }
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -300,6 +302,7 @@ local plugins = {
       buf_new_file
     }
   },
+  lspconfig,
   treesitter
 }
 
