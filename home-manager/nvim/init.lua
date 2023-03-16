@@ -362,6 +362,39 @@ end
 
 vim.diagnostic.config({ virtual_text = false })
 
+---@class sign
+---@field msg_type string
+---@field icon string
+
+---@type sign[]
+local signs = {
+  {
+    msg_type = 'Error',
+    icon = ''
+  },
+  {
+    msg_type = 'Warn',
+    icon = ''
+  },
+  {
+    msg_type = 'Hint',
+    icon = ''
+  },
+  {
+    msg_type = 'Info',
+    icon = ''
+  }
+}
+
+for _, sign in ipairs(signs) do
+  local hl = 'DiagnosticSign' .. sign.msg_type
+  vim.fn.sign_define(hl, {
+    text = sign.icon,
+    numhl = hl,
+    texthl = hl
+  })
+end
+
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.list = true
