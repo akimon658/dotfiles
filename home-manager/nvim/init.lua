@@ -286,7 +286,7 @@ local plugins = {
       {
         '<C-p>',
         function()
-          require(builtin).git_files()
+          require(builtin).find_files()
         end
       }
     }
