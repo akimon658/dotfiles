@@ -79,6 +79,7 @@ local lspconfig = {
       capabilities = capabilities
     }
   end,
+  dependencies = { 'hrsh7th/cmp-nvim-lsp' },
   event = {
     buf_new_file,
     buf_read_pre
