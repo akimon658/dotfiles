@@ -397,6 +397,7 @@ end
 
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
+vim.opt.fileformats = { 'unix', 'dos' }
 vim.opt.list = true
 vim.opt.listchars = {
   eol = '↲',
