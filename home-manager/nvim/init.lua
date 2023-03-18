@@ -265,11 +265,15 @@ local plugins = {
     config = function()
       require('telescope').setup({
         defaults = {
+          layout_config = {
+            prompt_position = 'top',
+          },
           mappings = {
             i = {
               ['<esc>'] = require('telescope.actions').close
             }
-          }
+          },
+          sorting_strategy = 'ascending'
         }
       })
     end,
