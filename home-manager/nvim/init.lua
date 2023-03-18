@@ -273,6 +273,7 @@ local plugins = {
               ['<esc>'] = require('telescope.actions').close
             }
           },
+          prompt_prefix = '  ',
           sorting_strategy = 'ascending'
         }
       })
