@@ -62,22 +62,13 @@ local lspconfig = {
     }
 
     for _, lsp in ipairs(servers) do
-      lsp_config[lsp].setup {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' }
-            }
-          }
-        }
-      }
+      lsp_config[lsp].setup({ capabilities = capabilities })
     end
 
-    lsp_config.powershell_es.setup {
+    lsp_config.powershell_es.setup({
       bundle_path = 'C:/PowerShellEditorServices',
       capabilities = capabilities
-    }
+    })
   end,
   dependencies = { 'hrsh7th/cmp-nvim-lsp' },
   event = {
