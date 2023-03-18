@@ -265,6 +265,7 @@ local plugins = {
     config = function()
       require('telescope').setup({
         defaults = {
+          borderchars = { "─", "┃", "─", "┃", "╭", "╮", "╯", "╰" },
           layout_config = {
             prompt_position = 'top',
           },
