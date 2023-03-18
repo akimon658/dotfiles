@@ -142,7 +142,7 @@ local plugins = {
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, { 'i', 's' }),
           ['<C-p>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
@@ -151,7 +151,7 @@ local plugins = {
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, { 'i', 's' }),
           ['<Tab>'] = cmp.mapping.confirm {
             select = true
           }
@@ -265,7 +265,7 @@ local plugins = {
     config = function()
       require('telescope').setup({
         defaults = {
-          borderchars = { "─", "┃", "─", "┃", "╭", "╮", "╯", "╰" },
+          borderchars = { '─', '┃', '─', '┃', '╭', '╮', '╯', '╰' },
           layout_config = {
             prompt_position = 'top',
           },
