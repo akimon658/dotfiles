@@ -262,6 +262,17 @@ local plugins = {
   },
   {
     'nvim-telescope/telescope.nvim',
+    config = function()
+      require('telescope').setup({
+        defaults = {
+          mappings = {
+            i = {
+              ['<esc>'] = require('telescope.actions').close
+            }
+          }
+        }
+      })
+    end,
     dependencies = {
       devicons,
       plenary,
