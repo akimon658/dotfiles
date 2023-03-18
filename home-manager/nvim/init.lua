@@ -279,6 +279,12 @@ local plugins = {
         function()
           require(builtin).find_files()
         end
+      },
+      {
+        '<leader>h',
+        function()
+          require(builtin).help_tags()
+        end
       }
     }
   },
