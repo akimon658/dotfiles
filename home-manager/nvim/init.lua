@@ -74,7 +74,11 @@ local lspconfig = {
   event = {
     buf_new_file,
     buf_read_pre
-  }
+  },
+  keys = { {
+    '<leader>rn',
+    vim.lsp.buf.rename
+  } }
 }
 ---@type lazyPlugin
 local treesitter = {
