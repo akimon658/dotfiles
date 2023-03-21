@@ -56,6 +56,7 @@ local lspconfig = {
       'cssls',
       'gopls',
       'jsonls',
+      'lemminx',
       'pylsp',
       'sumneko_lua',
       tsserver
