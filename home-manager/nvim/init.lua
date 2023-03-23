@@ -205,7 +205,7 @@ local plugins = {
   {
     'kdheepak/lazygit.nvim',
     config = function()
-      if !vim_true(vim.fn.executable('lazygit')) then
+      if not vim_true(vim.fn.executable('lazygit')) then
         os.execute('go install github.com/jesseduffield/lazygit@latest')
       end
 
