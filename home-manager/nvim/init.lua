@@ -1,3 +1,9 @@
+---@param b number
+---@return boolean
+local function vim_true(b)
+  return b == 1
+end
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -199,6 +205,10 @@ local plugins = {
   {
     'kdheepak/lazygit.nvim',
     config = function()
+      if !vim_true(vim.fn.executable('lazygit')) then
+        os.execute('go install github.com/jesseduffield/lazygit@latest')
+      end
+
       vim.g.lazygit_floating_window_use_plenary = 1
     end,
     dependencies = { plenary },
@@ -437,7 +447,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.wrap = false
 
-if vim.fn.has('win64') == 1 then
+if vim_true(vim.fn.has('win64')) then
   vim.opt.shell = 'pwsh -NoLogo'
   vim.opt.shellcmdflag = '-Command'
   vim.opt.shellxquote = ''
