@@ -65,6 +65,7 @@ local lspconfig = {
       'lemminx',
       'pylsp',
       'sumneko_lua',
+      'yamlls',
       tsserver
     }
 
