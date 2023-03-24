@@ -70,7 +70,12 @@ local lspconfig = {
     }
 
     for _, lsp in ipairs(servers) do
-      lsp_config[lsp].setup({ capabilities = capabilities })
+      lsp_config[lsp].setup({
+        capabilities = capabilities,
+        settings = {
+          yaml = { keyOrdering = false }
+        }
+      })
     end
 
     lsp_config.powershell_es.setup({
