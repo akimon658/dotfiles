@@ -60,6 +60,7 @@ local lspconfig = {
       'bashls',
       'clangd',
       'cssls',
+      'dockerls',
       'gopls',
       'jsonls',
       'lemminx',
