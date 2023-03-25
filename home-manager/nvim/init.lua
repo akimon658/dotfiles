@@ -35,7 +35,7 @@ local insert_enter = 'InsertEnter'
 
 ---@class keymap
 ---@field [1] string
----@field [2] function
+---@field [2] function|string
 
 ---@alias lazySpec string|lazyPlugin
 
@@ -328,6 +328,28 @@ local plugins = {
         function()
           require(builtin).help_tags()
         end
+      }
+    }
+  },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = { devicons },
+    event = {
+      buf_new_file,
+      buf_read_pre
+    },
+    keys = {
+      {
+        '<leader>c',
+        '<Cmd>BufferClose<CR>'
+      },
+      {
+        '<leader>.',
+        '<Cmd>BufferNext<CR>'
+      },
+      {
+        '<leader>,',
+        '<Cmd>BufferPrevious<CR>'
       }
     }
   },
