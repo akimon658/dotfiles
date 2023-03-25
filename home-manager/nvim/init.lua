@@ -213,7 +213,10 @@ local plugins = {
     'kdheepak/lazygit.nvim',
     config = function()
       if not vim_true(vim.fn.executable('lazygit')) then
-        os.execute('go install github.com/jesseduffield/lazygit@latest')
+        local ok = os.execute('go install github.com/jesseduffield/lazygit@latest')
+        if not ok then
+          error('Failed to install Lazygit')
+        end
       end
 
       vim.g.lazygit_floating_window_use_plenary = 1
