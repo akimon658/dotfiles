@@ -456,7 +456,7 @@ local autocmds = {
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
       callback = function()
-        vim.fn.system('zenhan.exe', '0')
+        os.execute('zenhan.exe 0')
       end
     }
   }
