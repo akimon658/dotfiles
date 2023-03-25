@@ -324,7 +324,7 @@ local plugins = {
         end
       },
       {
-        '<leader>h',
+        '<leader>?',
         function()
           require(builtin).help_tags()
         end
