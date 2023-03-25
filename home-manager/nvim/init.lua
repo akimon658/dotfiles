@@ -489,6 +489,8 @@ for _, sign in ipairs(signs) do
   })
 end
 
+vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover)
+
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.fileformats = { 'unix', 'dos' }
