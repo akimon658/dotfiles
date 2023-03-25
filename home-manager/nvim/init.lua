@@ -210,26 +210,6 @@ local plugins = {
     event = buf_new_file
   },
   {
-    'kdheepak/lazygit.nvim',
-    config = function()
-      if not vim_true(vim.fn.executable('lazygit')) then
-        local ok = os.execute('go install github.com/jesseduffield/lazygit@latest')
-        if not ok then
-          error('Failed to install Lazygit')
-        end
-      end
-
-      vim.g.lazygit_floating_window_use_plenary = 1
-    end,
-    dependencies = { plenary },
-    keys = { {
-      '<C-g>',
-      function()
-        require('lazygit').lazygit()
-      end
-    } }
-  },
-  {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       local character = '│'
@@ -355,6 +335,16 @@ local plugins = {
         '<Cmd>BufferPrevious<CR>'
       }
     }
+  },
+  {
+    'TimUntersberger/neogit',
+    dependencies = { plenary },
+    keys = { {
+      '<C-g>',
+      function()
+        require('neogit').open()
+      end
+    } }
   },
   {
     'windwp/nvim-autopairs',
