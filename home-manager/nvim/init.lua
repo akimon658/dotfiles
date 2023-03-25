@@ -273,6 +273,16 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim',
     config = function()
+      local args = require('telescope.config').values.vimgrep_arguments
+      local additions = {
+        '--hidden',
+        '--glob',
+        '!**/.git/*'
+      }
+      for _, v in ipairs(additions) do
+        table.insert(args, v)
+      end
+
       require('telescope').setup({
         defaults = {
           layout_config = {
@@ -284,7 +294,19 @@ local plugins = {
             }
           },
           prompt_prefix = '  ',
-          sorting_strategy = 'ascending'
+          sorting_strategy = 'ascending',
+          vimgrep_arguments = args
+        },
+        pickers = {
+          find_files = {
+            find_command = {
+              'rg',
+              '--files',
+              '--hidden',
+              '--glob',
+              '!**/.git/*'
+            }
+          }
         }
       })
     end,
