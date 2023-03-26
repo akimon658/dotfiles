@@ -124,6 +124,7 @@ vim.opt.shiftwidth = 2
 vim.opt.signcolumn = 'yes'
 vim.opt.splitright = true
 vim.opt.tabstop = 4
+vim.opt.termguicolors = true
 vim.opt.wrap = false
 
 if vim_true(vim.fn.has('win64')) then
