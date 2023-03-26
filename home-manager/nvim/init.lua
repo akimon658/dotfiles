@@ -183,7 +183,8 @@ local plugins = {
         sources = {
           { name = 'luasnip' },
           { name = 'nvim_lsp' },
-          { name = 'nvim_lua' }
+          { name = 'nvim_lua' },
+          { name = 'path' }
         },
         window = {
           completion = bordered_window,
@@ -197,6 +198,7 @@ local plugins = {
         'hrsh7th/cmp-nvim-lsp',
         dependencies = { lspconfig }
       },
+      'hrsh7th/cmp-path',
       'onsails/lspkind.nvim',
       {
         'saadparwaiz1/cmp_luasnip',
