@@ -40,6 +40,7 @@ local insert_enter = 'InsertEnter'
 ---@alias lazySpec string|lazyPlugin
 
 local devicons = 'nvim-tree/nvim-web-devicons'
+local nui = 'MunifTanjim/nui.nvim'
 local plenary = 'nvim-lua/plenary.nvim'
 ---@type lazyPlugin
 local lspconfig = {
@@ -133,6 +134,14 @@ local plugins = {
     event = {
       buf_new_file,
       buf_read_pre
+    }
+  },
+  {
+    'folke/noice.nvim',
+    config = true,
+    dependencies = {
+      nui,
+      treesitter
     }
   },
   {
@@ -270,8 +279,8 @@ local plugins = {
       })
     end,
     dependencies = {
-      'MunifTanjim/nui.nvim',
       devicons,
+      nui,
       plenary
     },
     keys = { {
