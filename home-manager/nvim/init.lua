@@ -70,10 +70,16 @@ local lspconfig = {
       tsserver
     }
 
+    local schemastore = require('schemastore')
+
     for _, lsp in ipairs(servers) do
       lsp_config[lsp].setup({
         capabilities = capabilities,
         settings = {
+          json = {
+            schemas = schemastore.json.schemas(),
+            validate = { enable = true }
+          },
           yaml = { keyOrdering = false }
         }
       })
@@ -84,7 +90,10 @@ local lspconfig = {
       capabilities = capabilities
     })
   end,
-  dependencies = { 'hrsh7th/cmp-nvim-lsp' },
+  dependencies = {
+    'b0o/schemastore.nvim',
+    'hrsh7th/cmp-nvim-lsp'
+  },
   event = {
     buf_new_file,
     buf_read_pre
