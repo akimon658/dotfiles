@@ -1,3 +1,5 @@
+local event = require('vim_event')
+
 ---@type LazyPluginSpec
 local autopairs = {
   'windwp/nvim-autopairs',
@@ -38,8 +40,8 @@ local autopairs = {
     end
   end,
   event = {
-    'BufReadPost',
-    require('vim_event').buf_new_file
+    event.buf_new_file,
+    event.buf_read_post
   }
 }
 
