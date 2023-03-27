@@ -54,8 +54,17 @@ local cmp = {
         documentation = bordered_window
       }
     })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'cmdline' },
+        { name = 'path' }
+      })
+    })
   end,
   dependencies = {
+    'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lua',
     {
       'hrsh7th/cmp-nvim-lsp',
@@ -68,7 +77,10 @@ local cmp = {
       dependencies = { 'L3MON4D3/LuaSnip' }
     },
   },
-  event = require('vim_event').insert_enter
+  event = {
+    'CmdlineEnter',
+    require('vim_event').insert_enter
+  }
 }
 
 return cmp
