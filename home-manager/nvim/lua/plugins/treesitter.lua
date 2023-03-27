@@ -7,6 +7,16 @@ local treesitter = {
   config = function()
     require('nvim-treesitter.configs').setup {
       auto_install = true,
+      -- For noice.nvim (https://github.com/folke/noice.nvim#%EF%B8%8F-requirements)
+      ensure_installed = {
+        'bash',
+        'lua',
+        'markdown',
+        'markdown_inline',
+        'regex',
+        'vim'
+      },
+      sync_install = true,
       highlight = {
         enable = true
       }
