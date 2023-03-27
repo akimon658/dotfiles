@@ -60,6 +60,12 @@ local telescope = {
       end
     },
     {
+      '<leader>f',
+      function()
+        require(builtin).live_grep()
+      end
+    },
+    {
       '<leader>?',
       function()
         require(builtin).help_tags()
