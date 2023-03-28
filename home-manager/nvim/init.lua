@@ -42,8 +42,18 @@ local autocmds = {
         vim.diagnostic.open_float({ focusable = false })
       end
     }
-  },
-  {
+  }
+}
+
+local uname = vim.loop.os_uname()
+---@type string
+local sysname = uname.sysname
+local is_windows = sysname == 'Windows_NT'
+local is_wsl = sysname == 'Linux' and string.find(uname.release, 'microsoft') ~= nil
+
+if is_windows or is_wsl then
+  ---@type autoCmd
+  local disable_ime = {
     event = 'InsertLeave',
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
@@ -52,7 +62,8 @@ local autocmds = {
       end
     }
   }
-}
+  table.insert(autocmds, disable_ime)
+end
 
 for _, autocmd in ipairs(autocmds) do
   if autocmd.config.pattern == nil then
@@ -116,7 +127,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.wrap = false
 
-if vim.fn.has('win64') == 1 then
+if is_windows then
   vim.opt.shell = 'pwsh -NoLogo'
   vim.opt.shellcmdflag = '-Command'
   vim.opt.shellxquote = ''
