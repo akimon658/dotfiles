@@ -7,14 +7,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local opts = {
+require('lazy').setup('plugins', {
   checker = { enabled = true },
   defaults = {
     version = '*'
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin'
+      }
+    }
   }
-}
-
-require('lazy').setup('plugins', opts)
+})
 
 ---@class autoCmdConfig
 ---@field group any
