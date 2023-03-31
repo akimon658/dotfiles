@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local noice = {
   'folke/noice.nvim',
+  cond = not vim.g.started_by_firenvim,
   config = true,
   dependencies = {
     {

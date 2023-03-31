@@ -29,6 +29,7 @@ end
 ---@type LazyPluginSpec
 local barbar = {
   'romgrk/barbar.nvim',
+  cond = not vim.g.started_by_firenvim,
   dependencies = { require('plugins.devicons') },
   event = {
     event.buf_new_file,
