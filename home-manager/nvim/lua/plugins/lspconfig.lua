@@ -57,10 +57,20 @@ local lspconfig = {
     event.buf_new_file,
     event.buf_read_pre
   },
-  keys = { {
-    '<leader>rn',
-    vim.lsp.buf.rename
-  } }
+  keys = {
+    {
+      '<leader>h',
+      vim.lsp.buf.hover
+    },
+    {
+      '<leader>rf',
+      vim.lsp.buf.references
+    },
+    {
+      '<leader>rn',
+      vim.lsp.buf.rename
+    }
+  }
 }
 
 return lspconfig
