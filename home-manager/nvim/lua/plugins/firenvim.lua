@@ -10,6 +10,11 @@ local firenvim = {
   end,
   cond = not not vim.g.started_by_firenvim,
   config = function()
+    vim.g.firenvim_config = {
+      localSettings = {
+        ['.*'] = { takeover = 'never' }
+      }
+    }
     vim.opt.guifont = 'HackGen Console NF:h11'
   end
 }
