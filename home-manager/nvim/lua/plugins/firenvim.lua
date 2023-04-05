@@ -10,11 +10,20 @@ local firenvim = {
   end,
   cond = not not vim.g.started_by_firenvim,
   config = function()
+    vim.api.nvim_create_autocmd('BufEnter', {
+      pattern = 'github.com_*.txt',
+      callback = function()
+        vim.opt_local.filetype = 'markdown'
+      end
+    })
+
     vim.g.firenvim_config = {
       localSettings = {
-        ['.*'] = { takeover = 'never' }
+        [ [[.*]] ] = { takeover = 'never' },
+        [ [[github\.com]] ] = { takeover = 'always' }
       }
     }
+
     vim.opt.guifont = 'HackGen Console NF:h11'
   end
 }
