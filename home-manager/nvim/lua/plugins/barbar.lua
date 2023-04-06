@@ -15,6 +15,14 @@ local keys = {
     '<Cmd>BufferPrevious<CR>'
   },
   {
+    '<leader>>',
+    '<Cmd>BufferMoveNext<CR>'
+  },
+  {
+    '<leader><',
+    '<Cmd>BufferMovePrevious<CR>'
+  },
+  {
     '<leader>t0',
     '<Cmd>BufferLast<CR>'
   }
