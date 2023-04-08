@@ -20,7 +20,8 @@ local firenvim = {
     vim.g.firenvim_config = {
       localSettings = {
         [ [[.*]] ] = { takeover = 'never' },
-        [ [[github\.com]] ] = { takeover = 'always' }
+        [ [[github\.com]] ] = { takeover = 'always' },
+        [ [[github\.com.*blob]] ] = { takeover = 'never' }
       }
     }
 
