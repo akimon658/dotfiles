@@ -3,6 +3,7 @@ local builtin = 'telescope.builtin'
 ---@type LazyPluginSpec
 local telescope = {
   'nvim-telescope/telescope.nvim',
+  cmd = 'Telescope',
   config = function()
     local args = require('telescope.config').values.vimgrep_arguments
     local additions = {
