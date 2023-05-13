@@ -92,19 +92,19 @@ vim.diagnostic.config({ virtual_text = false })
 local signs = {
   {
     msg_type = 'Error',
-    icon = ''
+    icon = ''
   },
   {
     msg_type = 'Warn',
-    icon = ''
+    icon = ''
   },
   {
     msg_type = 'Hint',
-    icon = ''
+    icon = ''
   },
   {
     msg_type = 'Info',
-    icon = ''
+    icon = ''
   }
 }
 
