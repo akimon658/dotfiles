@@ -41,7 +41,7 @@ local autocmds = {
     event = 'BufWritePre',
     config = {
       group = vim.api.nvim_create_augroup('fmt', {}),
-      callback = vim.lsp.buf.formatting_sync
+      callback = vim.lsp.buf.format
     }
   },
   {
@@ -49,7 +49,9 @@ local autocmds = {
     config = {
       group = vim.api.nvim_create_augroup('diagnostics_hover', {}),
       callback = function()
-        vim.diagnostic.open_float({ focusable = false })
+        if not vim.diagnostic.is_disabled() then
+          vim.diagnostic.open_float({ focusable = false })
+        end
       end
     }
   }
