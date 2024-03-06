@@ -23,9 +23,9 @@ local lspconfig = {
       'gopls',
       'jsonls',
       'lemminx',
+      'lua_ls',
       'nimls',
       'pylsp',
-      'sumneko_lua',
       'yamlls',
       tsserver
     }
