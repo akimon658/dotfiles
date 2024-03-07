@@ -35,14 +35,17 @@ require('lazy').setup('plugins', {
 ---@field event string
 ---@field config autoCmdConfig
 
+local any_pattern = { '*' }
+
 ---@type autoCmd[]
 local autocmds = {
   {
     event = 'BufWritePre',
     config = {
       group = vim.api.nvim_create_augroup('fmt', {}),
-      callback = vim.lsp.buf.format
-    }
+      callback = vim.lsp.buf.format,
+      pattern = any_pattern,
+    },
   },
   {
     event = 'CursorHold',
@@ -52,9 +55,10 @@ local autocmds = {
         if not vim.diagnostic.is_disabled() then
           vim.diagnostic.open_float({ focusable = false })
         end
-      end
-    }
-  }
+      end,
+      pattern = any_pattern,
+    },
+  },
 }
 
 local uname = vim.loop.os_uname()
@@ -71,16 +75,14 @@ if is_windows or is_wsl then
       group = vim.api.nvim_create_augroup('disable_ime', {}),
       callback = function()
         os.execute('zenhan.exe 0')
-      end
-    }
+      end,
+      pattern = any_pattern,
+    },
   }
   table.insert(autocmds, disable_ime)
 end
 
 for _, autocmd in ipairs(autocmds) do
-  if autocmd.config.pattern == nil then
-    autocmd.config.pattern = { '*' }
-  end
   vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
