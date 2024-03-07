@@ -43,7 +43,13 @@ local autocmds = {
     event = 'BufWritePre',
     config = {
       group = vim.api.nvim_create_augroup('fmt', {}),
-      callback = vim.lsp.buf.format,
+      callback = function()
+        vim.lsp.buf.format {
+          filter = function(client)
+            return client.server_capabilities.documentFormattingProvider ~= nil
+          end
+        }
+      end,
       pattern = any_pattern,
     },
   },
