@@ -8,7 +8,8 @@ local noice = {
       'rcarriga/nvim-notify',
       config = function()
         require('notify').setup({ stages = 'static' })
-      end
+      end,
+      dependencies = { require 'plugins.vscode' },
     },
     require('plugins.nui'),
     require('plugins.treesitter')
