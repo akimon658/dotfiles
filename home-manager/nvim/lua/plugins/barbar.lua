@@ -1,6 +1,6 @@
 local event = require('vim_event')
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 local keys = {
   {
     '<leader>c',
