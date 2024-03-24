@@ -4,7 +4,7 @@ local event = require('vim_event')
 local scrollview = {
   'dstein64/nvim-scrollview',
   config = function()
-    vim.api.nvim_set_hl(0, 'ScrollView', { link = 'TermCursor' })
+    vim.api.nvim_set_hl(0, 'ScrollView', { background = "#666666" })
     vim.g.scrollview_column = 1
   end,
   event = {
