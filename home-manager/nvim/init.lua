@@ -72,15 +72,23 @@ local uname = vim.loop.os_uname()
 local sysname = uname.sysname
 local is_windows = sysname == 'Windows_NT'
 local is_wsl = sysname == 'Linux' and string.find(uname.release, 'microsoft') ~= nil
+local is_mac = sysname == "Darwin"
+local im_disable_cmd = ""
 
 if is_windows or is_wsl then
+  im_disable_cmd = "zenhan.exe 0"
+elseif is_mac then
+  im_disable_cmd = "osascript -e 'tell application \"System Events\" to key code 102'"
+end
+
+if im_disable_cmd ~= "" then
   ---@type autoCmd
   local disable_ime = {
     event = 'InsertLeave',
     config = {
       group = vim.api.nvim_create_augroup('disable_ime', {}),
       callback = function()
-        os.execute('zenhan.exe 0')
+        os.execute(im_disable_cmd)
       end,
       pattern = any_pattern,
     },
