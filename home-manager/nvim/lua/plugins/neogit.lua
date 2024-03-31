@@ -1,18 +1,18 @@
 ---@type LazyPluginSpec
 local neogit = {
-  'NeogitOrg/neogit',
+  "NeogitOrg/neogit",
   config = function()
-    require('neogit').setup({
-      disable_commit_confirmation = true
-    })
+    require "neogit".setup {
+      disable_commit_confirmation = true,
+    }
   end,
-  dependencies = { require('plugins.plenary') },
+  dependencies = { require "plugins.plenary" },
   keys = { {
-    '<C-g>',
+    "<C-g>",
     function()
-      require('neogit').open()
-    end
-  } }
+      require "neogit".open()
+    end,
+  } },
 }
 
 return neogit

@@ -1,11 +1,11 @@
 ---@type LazyPluginSpec
 local vscode_plugin = {
-  'Mofiqul/vscode.nvim',
+  "Mofiqul/vscode.nvim",
   config = function()
-    local vscode = require('vscode')
-    vscode.setup({ transparent = true })
+    local vscode = require "vscode"
+    vscode.setup { transparent = true }
     vscode.load()
-  end
+  end,
 }
 
 return vscode_plugin

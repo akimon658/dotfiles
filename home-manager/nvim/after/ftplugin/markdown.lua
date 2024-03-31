@@ -1,1 +1,1 @@
-require('ftbase.text')
+require "ftbase.text"

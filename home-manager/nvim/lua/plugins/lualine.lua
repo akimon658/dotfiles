@@ -1,10 +1,10 @@
 ---@type LazyPluginSpec
 local lualine = {
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   config = true,
   dependencies = {
-    require 'plugins.devicons',
-    require 'plugins.vscode',
+    require "plugins.devicons",
+    require "plugins.vscode",
   },
 }
 

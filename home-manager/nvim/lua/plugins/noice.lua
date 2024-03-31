@@ -1,17 +1,17 @@
 ---@type LazyPluginSpec
 local noice = {
-  'folke/noice.nvim',
+  "folke/noice.nvim",
   config = true,
   dependencies = {
     {
-      'rcarriga/nvim-notify',
+      "rcarriga/nvim-notify",
       config = function()
-        require('notify').setup({ stages = 'static' })
+        require "notify".setup { stages = "static" }
       end,
-      dependencies = { require 'plugins.vscode' },
+      dependencies = { require "plugins.vscode" },
     },
-    require('plugins.nui'),
-    require('plugins.treesitter')
-  }
+    require "plugins.nui",
+    require "plugins.treesitter",
+  },
 }
 return noice

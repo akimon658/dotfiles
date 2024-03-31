@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local nui = {
-  'MunifTanjim/nui.nvim',
-  lazy = true
+  "MunifTanjim/nui.nvim",
+  lazy = true,
 }
 
 return nui

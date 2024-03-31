@@ -1,78 +1,78 @@
-local builtin = 'telescope.builtin'
+local builtin = "telescope.builtin"
 
 ---@type LazyPluginSpec
 local telescope = {
-  'nvim-telescope/telescope.nvim',
-  cmd = 'Telescope',
+  "nvim-telescope/telescope.nvim",
+  cmd = "Telescope",
   config = function()
-    local args = require('telescope.config').values.vimgrep_arguments
+    local args = require "telescope.config".values.vimgrep_arguments
     local additions = {
-      '--hidden',
-      '--glob',
-      '!**/.git/*'
+      "--hidden",
+      "--glob",
+      "!**/.git/*",
     }
     for _, v in ipairs(additions) do
       table.insert(args, v)
     end
 
-    require('telescope').setup({
+    require "telescope".setup {
       defaults = {
         layout_config = {
-          prompt_position = 'top',
+          prompt_position = "top",
         },
         mappings = {
           i = {
-            ['<esc>'] = require('telescope.actions').close
-          }
+            ["<esc>"] = require "telescope.actions".close,
+          },
         },
-        prompt_prefix = '  ',
-        sorting_strategy = 'ascending',
-        vimgrep_arguments = args
+        prompt_prefix = "  ",
+        sorting_strategy = "ascending",
+        vimgrep_arguments = args,
       },
       pickers = {
         find_files = {
           find_command = {
-            'rg',
-            '--files',
-            '--hidden',
-            '--glob',
-            '!**/.git/*'
-          }
-        }
-      }
-    })
+            "rg",
+            "--files",
+            "--hidden",
+            "--glob",
+            "!**/.git/*",
+          },
+        },
+      },
+    }
   end,
   dependencies = {
-    require('plugins.devicons'),
-    require('plugins.plenary'),
-    require('plugins.treesitter')
+    require "plugins.devicons",
+    require "plugins.plenary",
+    require "plugins.treesitter",
   },
   keys = {
     {
-      '<C-f>',
+      "<C-f>",
       function()
         require(builtin).current_buffer_fuzzy_find()
-      end
+      end,
     },
     {
-      '<C-p>',
+      "<C-p>",
       function()
         require(builtin).find_files()
-      end
+      end,
     },
     {
-      '<leader>f',
+      "<leader>f",
       function()
         require(builtin).live_grep()
-      end
+      end,
     },
     {
-      '<leader>?',
+      "<leader>?",
       function()
         require(builtin).help_tags()
-      end
-    }
-  }
+      end,
+    },
+  },
 }
 
 return telescope
