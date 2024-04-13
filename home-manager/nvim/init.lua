@@ -59,8 +59,16 @@ local autocmds = {
       group = vim.api.nvim_create_augroup("tex_fmt", {}),
       callback = function()
         local position = vim.fn.getcharpos "."
-        vim.cmd "silent! execute ':%s/。/．/g'"
-        vim.cmd "silent! execute ':%s/、/，/g'"
+        ---@type integer
+        local line_count = vim.api.nvim_buf_line_count(0)
+        ---@type string[]
+        local buf_lines = vim.api.nvim_buf_get_lines(0, 0, line_count, true)
+        for i, line in ipairs(buf_lines) do
+          line = string.gsub(line, "。", "．")
+          line = string.gsub(line, "、", "，")
+          buf_lines[i] = line
+        end
+        vim.api.nvim_buf_set_lines(0, 0, line_count, true, buf_lines)
         vim.fn.setcharpos(".", position)
       end,
       pattern = { "*.tex" },
