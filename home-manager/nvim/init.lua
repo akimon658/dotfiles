@@ -61,7 +61,7 @@ local autocmds = {
         local position = vim.fn.getcharpos "."
         vim.cmd "silent! execute ':%s/。/．/g'"
         vim.cmd "silent! execute ':%s/、/，/g'"
-        vim.fn.setpos(".", position)
+        vim.fn.setcharpos(".", position)
       end,
       pattern = { "*.tex" },
     },
