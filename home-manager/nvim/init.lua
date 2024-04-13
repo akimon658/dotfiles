@@ -54,6 +54,19 @@ local autocmds = {
     },
   },
   {
+    event = "BufWritePre",
+    config = {
+      group = vim.api.nvim_create_augroup("tex_fmt", {}),
+      callback = function()
+        local position = vim.fn.getcharpos "."
+        vim.cmd "silent! execute ':%s/。/．/g'"
+        vim.cmd "silent! execute ':%s/、/，/g'"
+        vim.fn.setpos(".", position)
+      end,
+      pattern = { "*.tex" },
+    },
+  },
+  {
     event = "CursorHold",
     config = {
       group = vim.api.nvim_create_augroup("diagnostics_hover", {}),

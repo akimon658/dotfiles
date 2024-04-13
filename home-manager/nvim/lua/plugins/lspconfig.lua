@@ -25,6 +25,7 @@ local lspconfig = {
       "lemminx",
       "lua_ls",
       "nimls",
+      "texlab",
       "pylsp",
       "yamlls",
       tsserver,
@@ -39,6 +40,15 @@ local lspconfig = {
           json = {
             schemas = schemastore.json.schemas(),
             validate = { enable = true },
+          },
+          texlab = {
+            build = {
+              args = {
+                "-synctex=1",
+                "%f",
+              },
+              onSave = true,
+            },
           },
           yaml = { keyOrdering = false },
         },
