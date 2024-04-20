@@ -26,68 +26,6 @@ require "lazy".setup("plugins", {
   },
 })
 
----@class autoCmdConfig
----@field group any
----@field pattern string[]
----@field callback function
-
----@class autoCmd
----@field event string
----@field config autoCmdConfig
-
-local any_pattern = { "*" }
-
----@type autoCmd[]
-local autocmds = {
-  {
-    event = "BufWritePre",
-    config = {
-      group = vim.api.nvim_create_augroup("fmt", {}),
-      callback = function()
-        vim.lsp.buf.format {
-          filter = function(client)
-            return client.server_capabilities.documentFormattingProvider ~= nil
-          end,
-        }
-      end,
-      pattern = any_pattern,
-    },
-  },
-  {
-    event = "BufWritePre",
-    config = {
-      group = vim.api.nvim_create_augroup("tex_fmt", {}),
-      callback = function()
-        local position = vim.fn.getcharpos "."
-        ---@type integer
-        local line_count = vim.api.nvim_buf_line_count(0)
-        ---@type string[]
-        local buf_lines = vim.api.nvim_buf_get_lines(0, 0, line_count, true)
-        for i, line in ipairs(buf_lines) do
-          line = string.gsub(line, "。", "．")
-          line = string.gsub(line, "、", "，")
-          buf_lines[i] = line
-        end
-        vim.api.nvim_buf_set_lines(0, 0, line_count, true, buf_lines)
-        vim.fn.setcharpos(".", position)
-      end,
-      pattern = { "*.tex" },
-    },
-  },
-  {
-    event = "CursorHold",
-    config = {
-      group = vim.api.nvim_create_augroup("diagnostics_hover", {}),
-      callback = function()
-        if not vim.diagnostic.is_disabled() then
-          vim.diagnostic.open_float { focusable = false }
-        end
-      end,
-      pattern = any_pattern,
-    },
-  },
-}
-
 local uname = vim.loop.os_uname()
 ---@type string
 local sysname = uname.sysname
@@ -103,22 +41,16 @@ elseif is_mac then
 end
 
 if im_disable_cmd ~= "" then
-  ---@type autoCmd
-  local disable_ime = {
+  require "vim_util".create_autocmd {
     event = "InsertLeave",
     config = {
       group = vim.api.nvim_create_augroup("disable_ime", {}),
       callback = function()
         os.execute(im_disable_cmd)
       end,
-      pattern = any_pattern,
+      pattern = "*",
     },
   }
-  table.insert(autocmds, disable_ime)
-end
-
-for _, autocmd in ipairs(autocmds) do
-  vim.api.nvim_create_autocmd(autocmd.event, autocmd.config)
 end
 
 vim.diagnostic.config { virtual_text = false }
