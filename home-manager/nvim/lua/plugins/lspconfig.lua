@@ -86,6 +86,9 @@ local lspconfig = {
               },
               onSave = true,
             },
+            chktex = {
+              onEdit = true,
+            },
           },
           yaml = { keyOrdering = false },
         },
