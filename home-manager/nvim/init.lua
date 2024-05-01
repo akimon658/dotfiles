@@ -7,7 +7,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "lazy".setup("plugins", {
+require "lazy".setup {
   checker = { enabled = true },
   defaults = {
     version = "*",
@@ -24,7 +24,14 @@ require "lazy".setup("plugins", {
       },
     },
   },
-})
+  spec = {
+    { import = "plugins" },
+    {
+      import = "plugins_not_vscode",
+      cond = vim.g.vscode,
+    },
+  },
+}
 
 local uname = vim.loop.os_uname()
 ---@type string

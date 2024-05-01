@@ -8,10 +8,10 @@ local noice = {
       config = function()
         require "notify".setup { stages = "static" }
       end,
-      dependencies = { require "plugins.vscode" },
+      dependencies = { require "plugins_not_vscode.vscode" },
     },
-    require "plugins.nui",
-    require "plugins.treesitter",
+    require "plugins_not_vscode.nui",
+    require "plugins_not_vscode.treesitter",
   },
 }
 return noice
