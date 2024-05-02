@@ -28,7 +28,7 @@ require "lazy".setup {
     { import = "plugins" },
     {
       import = "plugins_not_vscode",
-      cond = vim.g.vscode,
+      cond = not vim.g.vscode,
     },
   },
 }
