@@ -100,6 +100,7 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.fileformats = { "unix", "dos" }
+vim.opt.laststatus = 3
 vim.opt.list = true
 vim.opt.listchars = {
   eol = "↲",
