@@ -60,7 +60,7 @@ local lspconfig = {
       "jsonls",
       "lemminx",
       "lua_ls",
-      "nimls",
+      "nim_langserver",
       "texlab",
       "pylsp",
       "yamlls",
