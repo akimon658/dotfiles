@@ -63,6 +63,7 @@ local lspconfig = {
       "nim_langserver",
       "texlab",
       "pylsp",
+      "vuels",
       "yamlls",
       tsserver,
     }
