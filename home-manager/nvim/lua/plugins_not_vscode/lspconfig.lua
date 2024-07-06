@@ -55,7 +55,6 @@ local lspconfig = {
       "bashls",
       "clangd",
       "cssls",
-      "docker_compose_language_service",
       "dockerls",
       "gopls",
       "jsonls",
