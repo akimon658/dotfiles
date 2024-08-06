@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 ---@type string
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   os.execute("git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable " .. lazypath)
 end
 vim.opt.rtp:prepend(lazypath)
@@ -33,7 +33,7 @@ require "lazy".setup {
   },
 }
 
-local uname = vim.loop.os_uname()
+local uname = vim.uv.os_uname()
 ---@type string
 local sysname = uname.sysname
 local is_windows = sysname == "Windows_NT"
@@ -60,40 +60,29 @@ if im_disable_cmd ~= "" then
   }
 end
 
-vim.diagnostic.config { virtual_text = false }
-
----@class sign
----@field msg_type string
----@field icon string
-
----@type sign[]
-local signs = {
-  {
-    msg_type = "Error",
-    icon = "",
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+    },
   },
-  {
-    msg_type = "Warn",
-    icon = "",
-  },
-  {
-    msg_type = "Hint",
-    icon = "",
-  },
-  {
-    msg_type = "Info",
-    icon = "",
-  },
+  virtual_text = false,
 }
-
-for _, sign in ipairs(signs) do
-  local hl = "DiagnosticSign" .. sign.msg_type
-  vim.fn.sign_define(hl, {
-    text = sign.icon,
-    numhl = hl,
-    texthl = hl,
-  })
-end
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 

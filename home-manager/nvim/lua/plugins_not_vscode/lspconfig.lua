@@ -27,7 +27,7 @@ local lspconfig = {
         config = {
           group = vim.api.nvim_create_augroup("diagnostics_hover", {}),
           callback = function()
-            if not vim.diagnostic.is_disabled() then
+            if vim.diagnostic.is_enabled() then
               vim.diagnostic.open_float { focusable = false }
             end
           end,
