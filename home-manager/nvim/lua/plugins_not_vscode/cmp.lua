@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local cmp = {
   "hrsh7th/nvim-cmp",
+  branch = "main",
   config = function()
     local cmp = require "cmp"
     local luasnip = require "luasnip"
