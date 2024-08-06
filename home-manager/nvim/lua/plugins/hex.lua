@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local hex = {
   "RaafatTurki/hex.nvim",
-  config = true,
+  opts = {},
 }
 
 return hex

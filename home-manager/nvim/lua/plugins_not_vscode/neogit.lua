@@ -2,11 +2,6 @@
 local neogit = {
   "NeogitOrg/neogit",
   branch = "master",
-  config = function()
-    require "neogit".setup {
-      disable_commit_confirmation = true,
-    }
-  end,
   dependencies = { require "plugins.plenary" },
   keys = { {
     "<C-g>",
@@ -14,6 +9,9 @@ local neogit = {
       require "neogit".open()
     end,
   } },
+  opts = {
+    disable_commit_confirmation = true,
+  },
 }
 
 return neogit
