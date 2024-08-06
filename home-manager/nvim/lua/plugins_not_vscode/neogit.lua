@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local neogit = {
   "NeogitOrg/neogit",
+  branch = "master",
   config = function()
     require "neogit".setup {
       disable_commit_confirmation = true,
