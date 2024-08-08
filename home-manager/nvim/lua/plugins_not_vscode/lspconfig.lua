@@ -72,6 +72,18 @@ local lspconfig = {
     ---@type string
     local tsserver = use_deno and "denols" or "tsserver"
 
+    ---@type string
+    local goimports_local
+    ---@type string
+    local gomod_path = vim.fn.getcwd() .. "/go.mod"
+    if vim.fn.filereadable(gomod_path) == 1 then
+      local f = io.open(gomod_path)
+
+      if f then
+        goimports_local = vim.split(f:read(), " ")[2]
+      end
+    end
+
     ---@type string[]
     local servers = {
       "bashls",
@@ -97,6 +109,9 @@ local lspconfig = {
       lsp_config[lsp].setup {
         capabilities = capabilities,
         settings = {
+          gopls = {
+            ["local"] = goimports_local,
+          },
           json = {
             schemas = schemas,
             validate = { enable = true },
