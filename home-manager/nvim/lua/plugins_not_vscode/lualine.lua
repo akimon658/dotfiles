@@ -12,17 +12,38 @@ local lualine = {
   opts = {
     options = {
       globalstatus = true,
+      section_separators = "",
     },
     sections = {
+      lualine_a = {
+        {
+          "mode",
+          separator = {
+            right = "",
+          },
+        },
+      },
       lualine_x = {
         {
           "copilot",
-          show_colors = true
+          show_colors = true,
         },
-        "encoding",
+        {
+          "encoding",
+          fmt = function(str)
+            return string.upper(str)
+          end,
+        },
         "fileformat",
-        "filetype",
+        {
+          "filetype",
+          fmt = function(str)
+            return string.gsub(str, "^%l", string.upper)
+          end,
+        },
       },
+      lualine_y = {},
+      lualine_z = {},
     },
   },
 }
