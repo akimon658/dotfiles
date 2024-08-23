@@ -6,6 +6,9 @@ local copilot = {
   end,
   event = require "vim_event".buf_read_post,
   opts = {
+    filetypes = {
+      markdown = true,
+    },
     suggestions = {
       auto_trigger = true,
     },
