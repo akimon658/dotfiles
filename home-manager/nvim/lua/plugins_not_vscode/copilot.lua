@@ -8,6 +8,7 @@ local copilot = {
   opts = {
     filetypes = {
       markdown = true,
+      yaml = true,
     },
     suggestion = {
       auto_trigger = true,
