@@ -9,7 +9,7 @@ local copilot = {
     filetypes = {
       markdown = true,
     },
-    suggestions = {
+    suggestion = {
       auto_trigger = true,
     },
   },
