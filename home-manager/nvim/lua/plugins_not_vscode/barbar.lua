@@ -37,6 +37,9 @@ end
 ---@type LazyPluginSpec
 local barbar = {
   "romgrk/barbar.nvim",
+  config = function()
+    vim.api.nvim_set_hl(0, "BufferTabpageFill", {})
+  end,
   dependencies = { require "plugins_not_vscode.devicons" },
   event = {
     event.buf_new_file,
