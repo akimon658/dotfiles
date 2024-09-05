@@ -68,7 +68,8 @@ local lspconfig = {
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     ---@type boolean
-    local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. "/deno.json") == 1
+    local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. "/deno.json") == 1 or
+    vim.fn.filereadable(vim.fn.getcwd() .. "/deno.jsonc") == 1
     ---@type string
     local tsserver = use_deno and "denols" or "tsserver"
 
