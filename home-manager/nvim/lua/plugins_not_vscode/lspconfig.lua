@@ -69,9 +69,9 @@ local lspconfig = {
 
     ---@type boolean
     local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. "/deno.json") == 1 or
-    vim.fn.filereadable(vim.fn.getcwd() .. "/deno.jsonc") == 1
+        vim.fn.filereadable(vim.fn.getcwd() .. "/deno.jsonc") == 1
     ---@type string
-    local tsserver = use_deno and "denols" or "tsserver"
+    local tsserver = use_deno and "denols" or "ts_ls"
 
     ---@type string
     local goimports_local
