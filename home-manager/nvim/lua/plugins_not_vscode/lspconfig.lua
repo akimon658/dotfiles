@@ -117,6 +117,11 @@ local lspconfig = {
             schemas = schemas,
             validate = { enable = true },
           },
+          pylsp = {
+            plugins = {
+              autopep8 = { enabled = false },
+            },
+          },
           texlab = {
             build = {
               args = {
