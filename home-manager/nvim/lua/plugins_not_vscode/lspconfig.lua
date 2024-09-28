@@ -125,7 +125,6 @@ local lspconfig = {
           texlab = {
             build = {
               args = {
-                "-synctex=1",
                 "%f",
               },
               onSave = true,
