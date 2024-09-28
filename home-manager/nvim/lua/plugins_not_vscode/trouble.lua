@@ -5,7 +5,7 @@ local trouble = {
   keys = { {
     "<leader>m",
     function()
-      require "trouble".toggle()
+      require "trouble".toggle "diagnostics"
     end,
   } },
 }
