@@ -3,8 +3,8 @@ local vscode_plugin = {
   "Mofiqul/vscode.nvim",
   config = function()
     local vscode = require "vscode"
-    local wezterm_pane = os.getenv "WEZTERM_PANE"
-    vscode.setup { transparent = wezterm_pane and true or false }
+    local is_wezterm = os.getenv "TERM_PROGRAM" == "WezTerm"
+    vscode.setup { transparent = is_wezterm }
     vscode.load()
   end,
 }
