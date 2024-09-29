@@ -153,6 +153,10 @@ local lspconfig = {
   },
   keys = {
     {
+      "<leader>a",
+      vim.lsp.buf.code_action,
+    },
+    {
       "<leader>h",
       vim.lsp.buf.hover,
     },

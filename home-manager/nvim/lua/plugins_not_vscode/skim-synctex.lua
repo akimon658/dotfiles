@@ -26,7 +26,7 @@ return {
   },
   ft = "tex",
   keys = { {
-    "<Leader>s",
+    "<leader>s",
     function()
       vim.fn["synctex#forwardSerch"]()
     end,
