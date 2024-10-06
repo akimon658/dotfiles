@@ -86,6 +86,12 @@ vim.diagnostic.config {
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
+vim.filetype.add {
+  extension = {
+    mdx = "markdown.mdx",
+  },
+}
+
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.fileformats = { "unix", "dos" }
