@@ -98,7 +98,7 @@ local lspconfig = {
       "nim_langserver",
       "texlab",
       "pylsp",
-      "typst_lsp",
+      "tinymist",
       "vuels",
       "yamlls",
       tsserver,
@@ -136,6 +136,8 @@ local lspconfig = {
           },
           yaml = { keyOrdering = false },
         },
+        -- To make tinymist work outside of a git repo
+        single_file_support = true,
       }
     end
 

@@ -5,4 +5,9 @@ return {
     require "typst-preview".update()
   end,
   ft = "typst",
+  opts = {
+    dependencies_bin = {
+      tinymist = "tinymist",
+    },
+  },
 }
