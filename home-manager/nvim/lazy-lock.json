@@ -29,7 +29,7 @@
   "schemastore.nvim": { "branch": "main", "commit": "ce624332e6ba5a9a0c8f311a114ac179c5e72f62" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "trouble.nvim": { "branch": "main", "commit": "40c5317a6e90fe3393f07b0fee580d9e93a216b4" },
-  "typst-preview.nvim": { "branch": "master", "commit": "7933922c1ff15fb47a13686ff9bb60e9fef5a157" },
+  "typst-preview.nvim": { "branch": "master", "commit": "a53a136f893a59635166afcb4f277f581bd4bc73" },
   "vim-skim-synctex": { "branch": "main", "commit": "7ffdd8077d12f1b55e177e1b64edd2c96def7545" },
   "vscode.nvim": { "branch": "main", "commit": "7de58b7a6d55fe48475d0ba2fddbcec871717761" }
 }
