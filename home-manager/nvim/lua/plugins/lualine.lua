@@ -2,11 +2,11 @@
 local lualine = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    require "plugins_not_vscode.devicons",
-    require "plugins_not_vscode.vscode",
+    require "plugins.devicons",
+    require "plugins.vscode",
     {
       "AndreM222/copilot-lualine",
-      dependencies = { require "plugins_not_vscode.copilot" },
+      dependencies = { require "plugins.copilot" },
     },
   },
   opts = {

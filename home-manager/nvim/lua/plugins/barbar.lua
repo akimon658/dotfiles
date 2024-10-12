@@ -40,7 +40,7 @@ local barbar = {
   config = function()
     vim.api.nvim_set_hl(0, "BufferTabpageFill", {})
   end,
-  dependencies = { require "plugins_not_vscode.devicons" },
+  dependencies = { require "plugins.devicons" },
   event = {
     event.buf_new_file,
     event.buf_read_pre,

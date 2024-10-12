@@ -43,9 +43,9 @@ local telescope = {
     }
   end,
   dependencies = {
-    require "plugins_not_vscode.devicons",
+    require "plugins.devicons",
     require "plugins.plenary",
-    require "plugins_not_vscode.treesitter",
+    require "plugins.treesitter",
   },
   keys = {
     {

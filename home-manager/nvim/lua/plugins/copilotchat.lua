@@ -6,7 +6,7 @@ return {
     "CopilotChatToggle",
   },
   dependencies = {
-    require "plugins_not_vscode.copilot",
+    require "plugins.copilot",
     require "plugins.plenary",
   },
   opts = {},

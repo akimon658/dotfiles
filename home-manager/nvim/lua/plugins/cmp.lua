@@ -70,7 +70,7 @@ local cmp = {
     "hrsh7th/cmp-nvim-lua",
     {
       "hrsh7th/cmp-nvim-lsp",
-      dependencies = { require "plugins_not_vscode.lspconfig" },
+      dependencies = { require "plugins.lspconfig" },
     },
     "hrsh7th/cmp-path",
     "onsails/lspkind.nvim",

@@ -12,6 +12,7 @@ require "lazy".setup {
   defaults = {
     version = "*",
   },
+  spec = { import = "plugins" },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -22,13 +23,6 @@ require "lazy".setup {
         "tutor",
         "zipPlugin",
       },
-    },
-  },
-  spec = {
-    { import = "plugins" },
-    {
-      import = "plugins_not_vscode",
-      cond = not vim.g.vscode,
     },
   },
 }

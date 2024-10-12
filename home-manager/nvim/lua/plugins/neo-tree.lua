@@ -2,8 +2,8 @@
 local neo_tree = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
-    require "plugins_not_vscode.devicons",
-    require "plugins_not_vscode.nui",
+    require "plugins.devicons",
+    require "plugins.nui",
     require "plugins.plenary",
   },
   keys = { {
