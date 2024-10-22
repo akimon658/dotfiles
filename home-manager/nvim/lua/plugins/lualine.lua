@@ -23,6 +23,19 @@ local lualine = {
           },
         },
       },
+      lualine_b = {
+        "branch",
+        {
+          function()
+            local output = io.popen "git rev-list --left-right --count HEAD...@{upstream}":read()
+            local ahead, behind = string.match(output, "(%d+)%s+(%d+)")
+            return behind .. " " .. ahead .. ""
+          end,
+          color = "NonText",
+        },
+        "diff",
+        "diagnostics",
+      },
       lualine_x = {
         {
           "copilot",
