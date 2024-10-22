@@ -98,6 +98,7 @@ local lspconfig = {
       "nim_langserver",
       "texlab",
       "pylsp",
+      "rust_analyzer",
       "tinymist",
       "vuels",
       "yamlls",
