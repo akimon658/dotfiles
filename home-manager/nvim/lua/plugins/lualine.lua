@@ -32,6 +32,9 @@ local lualine = {
             return behind .. " " .. ahead .. ""
           end,
           color = "NonText",
+          cond = function()
+            return os.execute "git rev-parse --is-inside-work-tree > /dev/null 2>&1"
+          end,
         },
         "diff",
         "diagnostics",
