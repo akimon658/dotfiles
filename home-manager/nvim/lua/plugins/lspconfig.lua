@@ -96,7 +96,6 @@ local lspconfig = {
       "lemminx",
       "lua_ls",
       "nim_langserver",
-      "texlab",
       "pylsp",
       "rust_analyzer",
       "tinymist",
