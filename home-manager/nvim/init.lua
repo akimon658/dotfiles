@@ -87,6 +87,8 @@ vim.filetype.add {
 }
 
 vim.opt.cmdheight = 0
+vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, "CursorLine", { background = "#444444" })
 vim.opt.expandtab = true
 vim.opt.fileformats = { "unix", "dos" }
 vim.opt.laststatus = 3
