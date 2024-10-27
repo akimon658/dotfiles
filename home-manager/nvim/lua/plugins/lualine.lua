@@ -27,7 +27,11 @@ local lualine = {
         "branch",
         {
           function()
-            local output = io.popen "git rev-list --left-right --count HEAD...@{upstream}":read()
+            local output = io.popen "git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null":read()
+            if not output then
+              return ""
+            end
+
             local ahead, behind = string.match(output, "(%d+)%s+(%d+)")
             return behind .. " " .. ahead .. ""
           end,
