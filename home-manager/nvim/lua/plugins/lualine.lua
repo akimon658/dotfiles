@@ -33,7 +33,7 @@ local lualine = {
           end,
           color = "NonText",
           cond = function()
-            return os.execute "git rev-parse --is-inside-work-tree > /dev/null 2>&1"
+            return os.execute "git rev-parse --is-inside-work-tree > /dev/null 2>&1" == 0
           end,
         },
         "diff",
