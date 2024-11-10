@@ -10,7 +10,7 @@ local neogit = {
     end,
   } },
   opts = {
-    disable_commit_confirmation = true,
+    process_spinner = false,
   },
 }
 
