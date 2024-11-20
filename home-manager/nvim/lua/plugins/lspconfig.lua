@@ -123,17 +123,6 @@ local lspconfig = {
               autopep8 = { enabled = false },
             },
           },
-          texlab = {
-            build = {
-              args = {
-                "%f",
-              },
-              onSave = true,
-            },
-            chktex = {
-              onEdit = true,
-            },
-          },
           yaml = { keyOrdering = false },
         },
         -- To make tinymist work outside of a git repo
