@@ -95,11 +95,9 @@ local lspconfig = {
       "jsonls",
       "lemminx",
       "lua_ls",
-      "nim_langserver",
       "pylsp",
       "rust_analyzer",
       "tinymist",
-      "vuels",
       "yamlls",
       tsserver,
     }
