@@ -84,6 +84,9 @@ vim.filetype.add {
   extension = {
     mdx = "markdown.mdx",
   },
+  pattern = {
+    ["openapi.*%.ya?ml"] = "yaml.openapi",
+  },
 }
 
 vim.opt.cmdheight = 0

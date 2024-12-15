@@ -98,7 +98,7 @@ local lspconfig = {
       "pylsp",
       "rust_analyzer",
       "tinymist",
-      "yamlls",
+      "vacuum",
       tsserver,
     }
 
@@ -121,7 +121,6 @@ local lspconfig = {
               autopep8 = { enabled = false },
             },
           },
-          yaml = { keyOrdering = false },
         },
         -- To make tinymist work outside of a git repo
         single_file_support = true,
@@ -131,6 +130,19 @@ local lspconfig = {
     lsp_config.powershell_es.setup {
       bundle_path = "C:/PowerShellEditorServices",
       capabilities = capabilities,
+    }
+
+    lsp_config.yamlls.setup {
+      capabilities = capabilities,
+      filetypes = {
+        "yaml",
+        "yaml.docker-compose",
+        "yaml.gitlab",
+        "yaml.openapi", -- Added
+      },
+      settings = {
+        yaml = { keyOrdering = false },
+      },
     }
   end,
   dependencies = {
