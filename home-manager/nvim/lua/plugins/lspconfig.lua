@@ -122,8 +122,6 @@ local lspconfig = {
             },
           },
         },
-        -- To make tinymist work outside of a git repo
-        single_file_support = true,
       }
     end
 
