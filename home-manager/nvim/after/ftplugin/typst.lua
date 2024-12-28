@@ -1,7 +1,7 @@
 require "ftbase.text"
 
 require "nvim-autopairs".add_rule(
-  require "nvim-autopairs.rule" ("$", "$", "typst")
+  require "nvim-autopairs.rule" ("$", "$", "typst"):with_move(function() return true end)
 )
 
 local util = require "vim_util"
