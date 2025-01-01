@@ -1,5 +1,6 @@
 local ftmap = {
   gitcommit = "Git Commit",
+  html = "HTML",
   ["markdown.mdx"] = "MDX",
   toml = "TOML",
   typescript = "TypeScript",
