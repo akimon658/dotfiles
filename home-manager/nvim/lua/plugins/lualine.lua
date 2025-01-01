@@ -1,3 +1,13 @@
+local ftmap = {
+  gitcommit = "Git Commit",
+  ["markdown.mdx"] = "MDX",
+  toml = "TOML",
+  typescript = "TypeScript",
+  typescriptreact = "TSX",
+  yaml = "YAML",
+  ["yaml.openapi"] = "OpenAPI",
+}
+
 ---@type LazyPluginSpec
 local lualine = {
   "nvim-lualine/lualine.nvim",
@@ -57,8 +67,8 @@ local lualine = {
         "fileformat",
         {
           "filetype",
-          fmt = function(str)
-            return string.gsub(str, "^%l", string.upper)
+          fmt = function(filetype)
+            return ftmap[filetype] or string.gsub(filetype, "^%l", string.upper)
           end,
         },
       },
