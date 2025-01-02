@@ -1,4 +1,5 @@
 local ftmap = {
+  css = "CSS",
   gitcommit = "Git Commit",
   html = "HTML",
   ["markdown.mdx"] = "MDX",
