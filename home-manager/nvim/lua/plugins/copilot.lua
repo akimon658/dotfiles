@@ -2,7 +2,7 @@
 local copilot = {
   "zbirenbaum/copilot.lua",
   cond = function()
-    return string.find(vim.fn.getcwd(), "AtCoder") == nil and string.find(vim.fn.getcwd(), "project-euler") == nil
+    return string.find(vim.fn.getcwd(), "AtCoder") == nil and string.find(vim.fn.getcwd(), "project\\-euler") == nil
   end,
   event = require "vim_event".buf_read_post,
   opts = {
