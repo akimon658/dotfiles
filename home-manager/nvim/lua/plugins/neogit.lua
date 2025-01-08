@@ -9,9 +9,6 @@ local neogit = {
       require "neogit".open()
     end,
   } },
-  opts = {
-    process_spinner = false,
-  },
 }
 
 return neogit
