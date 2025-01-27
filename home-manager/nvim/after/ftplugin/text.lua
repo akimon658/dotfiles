@@ -1,1 +1,1 @@
-require "ftbase.text"
+vim.opt_local.wrap = true
