@@ -12,6 +12,9 @@ local copilot = {
     },
     suggestion = {
       auto_trigger = true,
+      keymap = {
+        accept = "<C-f>",
+      },
     },
   },
 }
