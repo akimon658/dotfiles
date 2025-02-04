@@ -44,6 +44,7 @@ local barbar = {
   event = {
     event.buf_new_file,
     event.buf_read_pre,
+    event.term_open,
   },
   keys = keys,
 }

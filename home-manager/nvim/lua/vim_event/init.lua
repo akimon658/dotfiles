@@ -3,8 +3,8 @@ local M = {
   buf_read_post = "BufReadPost",
   buf_read_pre = "BufReadPre",
   buf_write_pre = "BufWritePre",
-  -- vim_leave_pre = "VimLeavePre",
   insert_enter = "InsertEnter",
+  term_open = "TermOpen",
 }
 
 return M
