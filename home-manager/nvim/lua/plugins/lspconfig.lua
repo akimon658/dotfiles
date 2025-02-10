@@ -97,7 +97,6 @@ local lspconfig = {
       "lua_ls",
       "pylsp",
       "rust_analyzer",
-      "tinymist",
       "vacuum",
       tsserver,
     }
@@ -128,6 +127,13 @@ local lspconfig = {
     lsp_config.powershell_es.setup {
       bundle_path = "C:/PowerShellEditorServices",
       capabilities = capabilities,
+    }
+
+    lsp_config.tinymist.setup {
+      capabilities = capabilities,
+      settings = {
+        formatterMode = "typstyle",
+      },
     }
 
     lsp_config.yamlls.setup {
