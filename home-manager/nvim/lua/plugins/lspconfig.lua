@@ -124,6 +124,11 @@ local lspconfig = {
       }
     end
 
+    lsp_config.biome.setup {
+      capabilities = capabilities,
+      cmd = { "bunx", "biome", "lsp-proxy" },
+    }
+
     lsp_config.powershell_es.setup {
       bundle_path = "C:/PowerShellEditorServices",
       capabilities = capabilities,
