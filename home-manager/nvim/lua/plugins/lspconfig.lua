@@ -15,7 +15,7 @@ local lspconfig = {
           callback = function()
             vim.lsp.buf.format {
               filter = function(client)
-                return client.server_capabilities.documentFormattingProvider ~= nil
+                return client.supports_method "textDocument/formatting"
               end,
             }
           end,
