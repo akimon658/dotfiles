@@ -23,25 +23,33 @@ local lspconfig = {
         },
       },
       -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
+      -- https://zenn.dev/izumin/articles/b8046e64eaa2b5
       {
         event = event.buf_write_pre,
         config = {
-          group = vim.api.nvim_create_augroup("goimports", {}),
-          callback = function()
-            local params = vim.lsp.util.make_range_params()
-            params.context = { only = { "source.organizeImports" } }
-            local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+          group = vim.api.nvim_create_augroup("organize_imports", {}),
+          callback = function(args)
+            local supported_clients = {
+              "biome",
+              "gopls",
+            }
 
-            for cid, res in pairs(result or {}) do
-              for _, r in pairs(res.result or {}) do
-                if r.edit then
-                  local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encodint or "utf-16"
-                  vim.lsp.util.apply_workspace_edit(r.edit, enc)
+            for _, client in ipairs(vim.lsp.get_clients { bufnr = args.buf }) do
+              if vim.tbl_contains(supported_clients, client.name) then
+                local params = vim.lsp.util.make_range_params()
+                params.context = { only = { "source.organizeImports" }, diagnostics = {} }
+                local res = client.request_sync("textDocument/codeAction", params)
+
+                for _, r in pairs(res and res.result or {}) do
+                  if r.edit then
+                    local enc = (vim.lsp.get_client_by_id(client.id) or {}).offset_encodint or "utf-16"
+                    vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                  end
                 end
               end
             end
           end,
-          pattern = "*.go",
+          pattern = any_pattern,
         },
       },
       {
