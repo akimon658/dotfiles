@@ -36,7 +36,7 @@ local lspconfig = {
 
             for _, client in ipairs(vim.lsp.get_clients { bufnr = args.buf }) do
               if vim.tbl_contains(supported_clients, client.name) then
-                local params = vim.lsp.util.make_range_params()
+                local params = vim.lsp.util.make_range_params(nil, client.offset_encoding)
                 params.context = { only = { "source.organizeImports" }, diagnostics = {} }
                 local res = client.request_sync("textDocument/codeAction", params)
 
