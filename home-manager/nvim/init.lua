@@ -75,7 +75,6 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
     },
   },
-  virtual_text = false,
 }
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
