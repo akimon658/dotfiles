@@ -180,10 +180,6 @@ local lspconfig = {
       vim.lsp.buf.hover,
     },
     {
-      "<leader>rf",
-      vim.lsp.buf.references,
-    },
-    {
       "<leader>rn",
       vim.lsp.buf.rename,
     },

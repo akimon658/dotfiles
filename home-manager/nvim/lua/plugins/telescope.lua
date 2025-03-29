@@ -67,6 +67,12 @@ local telescope = {
       end,
     },
     {
+      "<leader>rf",
+      function()
+        require(builtin).lsp_references()
+      end,
+    },
+    {
       "<leader>?",
       function()
         require(builtin).help_tags()
