@@ -26,6 +26,7 @@ return {
   dependencies = {
     require "plugins.copilot",
     require "plugins.plenary",
+    require "plugins.telescope",
   },
   opts = {},
 }

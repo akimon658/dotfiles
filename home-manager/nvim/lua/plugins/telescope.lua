@@ -15,7 +15,9 @@ local telescope = {
       table.insert(args, v)
     end
 
-    require "telescope".setup {
+    local telescope = require "telescope"
+
+    telescope.setup {
       defaults = {
         layout_config = {
           prompt_position = "top",
@@ -29,6 +31,11 @@ local telescope = {
         sorting_strategy = "ascending",
         vimgrep_arguments = args,
       },
+      extensions = {
+        ["ui-select"] = {
+          require "telescope.themes".get_dropdown {},
+        },
+      },
       pickers = {
         find_files = {
           find_command = {
@@ -41,6 +48,7 @@ local telescope = {
         },
       },
     }
+    telescope.load_extension "ui-select"
   end,
   dependencies = {
     require "plugins.devicons",
