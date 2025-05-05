@@ -1,5 +1,6 @@
 local ftmap = {
   css = "CSS",
+  cpp = "C++",
   gitcommit = "Git Commit",
   html = "HTML",
   json = "JSON",
