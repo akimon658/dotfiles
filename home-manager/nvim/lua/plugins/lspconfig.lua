@@ -3,7 +3,6 @@ local event = require "vim_event"
 ---@type LazyPluginSpec
 local lspconfig = {
   "neovim/nvim-lspconfig",
-  branch = "master", -- TODO: Remove this line after the v1.7.0 release
   config = function()
     local any_pattern = "*"
 
