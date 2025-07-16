@@ -54,6 +54,7 @@ local telescope = {
     require "plugins.devicons",
     require "plugins.plenary",
     require "plugins.treesitter",
+    require "plugins.vimade",
   },
   keys = {
     {
