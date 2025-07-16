@@ -5,6 +5,7 @@ local M = {
   buf_write_pre = "BufWritePre",
   insert_enter = "InsertEnter",
   term_open = "TermOpen",
+  very_lazy = "VeryLazy",
 }
 
 return M
