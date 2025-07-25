@@ -84,6 +84,7 @@ vim.filetype.add {
     mdx = "markdown.mdx",
   },
   pattern = {
+    Caddyfile = "caddy",
     ["openapi.*%.ya?ml"] = "yaml.openapi",
   },
 }
