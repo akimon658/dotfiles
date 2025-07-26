@@ -19,6 +19,7 @@ local telescope = {
 
     telescope.setup {
       defaults = {
+        border = false,
         layout_config = {
           prompt_position = "top",
         },

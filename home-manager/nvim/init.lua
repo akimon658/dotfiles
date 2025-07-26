@@ -112,6 +112,7 @@ vim.opt.shiftwidth = 2
 vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.tabstop = 4
+vim.opt.winborder = "rounded"
 vim.opt.wrap = false
 
 if is_windows then
