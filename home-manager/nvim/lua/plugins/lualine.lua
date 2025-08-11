@@ -5,6 +5,7 @@ local ftmap = {
   html = "HTML",
   json = "JSON",
   ["markdown.mdx"] = "MDX",
+  sql = "SQL",
   toml = "TOML",
   typescript = "TypeScript",
   typescriptreact = "TSX",
