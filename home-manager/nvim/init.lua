@@ -89,6 +89,10 @@ vim.filetype.add {
   },
 }
 
+vim.lsp.enable {
+  "lua_ls",
+}
+
 vim.opt.cmdheight = 0
 vim.opt.cursorline = true
 vim.api.nvim_set_hl(0, "CursorLine", { background = "#444444" })

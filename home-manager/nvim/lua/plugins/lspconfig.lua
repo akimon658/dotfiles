@@ -99,7 +99,6 @@ local lspconfig = {
       "gopls",
       "jsonls",
       "lemminx",
-      "lua_ls",
       "pylsp",
       "rust_analyzer",
       "vacuum",
