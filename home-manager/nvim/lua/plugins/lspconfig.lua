@@ -72,9 +72,6 @@ local lspconfig = {
     end
     local lsp_config = require "lspconfig"
 
-    local capabilities = require "cmp_nvim_lsp".default_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-
     ---@type boolean
     local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. "/deno.json") == 1 or
         vim.fn.filereadable(vim.fn.getcwd() .. "/deno.jsonc") == 1
@@ -114,7 +111,6 @@ local lspconfig = {
 
     for _, lsp in ipairs(servers) do
       lsp_config[lsp].setup {
-        capabilities = capabilities,
         settings = {
           gopls = {
             ["local"] = goimports_local,
@@ -134,18 +130,15 @@ local lspconfig = {
 
     lsp_config.powershell_es.setup {
       bundle_path = "C:/PowerShellEditorServices",
-      capabilities = capabilities,
     }
 
     lsp_config.tinymist.setup {
-      capabilities = capabilities,
       settings = {
         formatterMode = "typstyle",
       },
     }
 
     lsp_config.yamlls.setup {
-      capabilities = capabilities,
       filetypes = {
         "yaml",
         "yaml.docker-compose",
@@ -159,7 +152,6 @@ local lspconfig = {
   end,
   dependencies = {
     "b0o/schemastore.nvim",
-    "hrsh7th/cmp-nvim-lsp",
   },
   event = {
     event.buf_new_file,
