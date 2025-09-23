@@ -98,18 +98,11 @@ local lspconfig = {
       "vacuum",
     }
 
-    local schemastore = require "schemastore"
-    local schemas = schemastore.json.schemas()
-
     for _, lsp in ipairs(servers) do
       lsp_config[lsp].setup {
         settings = {
           gopls = {
             ["local"] = goimports_local,
-          },
-          json = {
-            schemas = schemas,
-            validate = { enable = true },
           },
           pylsp = {
             plugins = {
@@ -142,9 +135,6 @@ local lspconfig = {
       },
     }
   end,
-  dependencies = {
-    "b0o/schemastore.nvim",
-  },
   event = {
     event.buf_new_file,
     event.buf_read_pre,
