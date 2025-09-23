@@ -1,14 +1,14 @@
 return {
   root_markers = { "deno.json", "deno.jsonc" },
   settings = {
-    deno = {
+    typescript = {
       inlayHints = {
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
         parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = true },
         parameterTypes = { enabled = true },
-        variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
         propertyDeclarationTypes = { enabled = true },
-        functionLikeReturnTypes = { enable = true },
-        enumMemberValues = { enabled = true },
+        variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
       },
     },
   },
