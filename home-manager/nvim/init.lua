@@ -92,6 +92,7 @@ vim.filetype.add {
 vim.lsp.enable {
   "lua_ls",
 }
+vim.lsp.inlay_hint.enable()
 
 vim.opt.cmdheight = 0
 vim.opt.cursorline = true
