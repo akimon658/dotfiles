@@ -72,12 +72,6 @@ local lspconfig = {
     end
     local lsp_config = require "lspconfig"
 
-    ---@type boolean
-    local use_deno = vim.fn.filereadable(vim.fn.getcwd() .. "/deno.json") == 1 or
-        vim.fn.filereadable(vim.fn.getcwd() .. "/deno.jsonc") == 1
-    ---@type string
-    local tsserver = use_deno and "denols" or "ts_ls"
-
     ---@type string
     local goimports_local
     ---@type string
@@ -102,7 +96,6 @@ local lspconfig = {
       "pylsp",
       "rust_analyzer",
       "vacuum",
-      tsserver,
     }
 
     local schemastore = require "schemastore"

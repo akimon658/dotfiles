@@ -90,7 +90,9 @@ vim.filetype.add {
 }
 
 vim.lsp.enable {
+  "denols",
   "lua_ls",
+  "ts_ls",
 }
 vim.lsp.inlay_hint.enable()
 
