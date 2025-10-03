@@ -93,6 +93,7 @@ vim.lsp.enable {
   "denols",
   "jsonls",
   "lua_ls",
+  "metals",
   "ts_ls",
 }
 vim.lsp.inlay_hint.enable()
