@@ -3,7 +3,7 @@ local event = require "vim_event"
 ---@type LazyKeysSpec[]
 local keys = {
   {
-    "<C-w>",
+    "<leader>w",
     "<Cmd>BufferClose<CR>",
   },
   {
