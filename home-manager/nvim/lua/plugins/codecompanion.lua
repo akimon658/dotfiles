@@ -1,11 +1,16 @@
 ---@type LazyPluginSpec
 return {
   "olimorris/codecompanion.nvim",
-  cmd = {
-    "CodeCompanionChat",
-  },
   dependencies = {
     require "plugins.plenary",
+  },
+  keys = {
+    {
+      "<leader>c",
+      function()
+        require "codecompanion".toggle()
+      end,
+    },
   },
   opts = {},
 }
