@@ -3,6 +3,7 @@ local neo_tree = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
     require "plugins.devicons",
+    require "plugins.lsp-file-operations",
     require "plugins.nui",
     require "plugins.plenary",
   },
