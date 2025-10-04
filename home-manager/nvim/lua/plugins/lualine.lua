@@ -1,6 +1,7 @@
 local ftmap = {
-  css = "CSS",
+  codecompanion = "CodeCompanion",
   cpp = "C++",
+  css = "CSS",
   gitcommit = "Git Commit",
   html = "HTML",
   json = "JSON",
@@ -61,7 +62,19 @@ local lualine = {
       lualine_x = {
         {
           "copilot",
+          cond = function()
+            return vim.bo.filetype ~= "codecompanion"
+          end,
           show_colors = true,
+        },
+        {
+          function()
+            local chat_strategy = require "codecompanion.strategies.chat"
+            local chat = chat_strategy.buf_get_chat(0)
+
+            return (type(chat.adapter.model) == "table" and chat.adapter.model.name)
+                or chat.settings.model
+          end,
         },
         {
           "encoding",
