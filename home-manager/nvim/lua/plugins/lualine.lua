@@ -20,10 +20,6 @@ local lualine = {
   dependencies = {
     require "plugins.devicons",
     require "plugins.vscode",
-    {
-      "AndreM222/copilot-lualine",
-      dependencies = { require "plugins.copilot" },
-    },
   },
   opts = {
     options = {
@@ -63,7 +59,7 @@ local lualine = {
         {
           "copilot",
           cond = function()
-            return vim.bo.filetype ~= "codecompanion"
+            return vim.bo.filetype ~= "codecompanion" and package.loaded["copilot"] ~= nil
           end,
           show_colors = true,
         },
@@ -74,6 +70,9 @@ local lualine = {
 
             return (type(chat.adapter.model) == "table" and chat.adapter.model.name)
                 or chat.settings.model
+          end,
+          cond = function()
+            return vim.bo.filetype == "codecompanion" and package.loaded["codecompanion"] ~= nil
           end,
         },
         {
