@@ -15,7 +15,7 @@ local lspconfig = {
           callback = function()
             vim.lsp.buf.format {
               filter = function(client)
-                return client.supports_method "textDocument/formatting"
+                return client:supports_method "textDocument/formatting"
               end,
             }
           end,
@@ -38,7 +38,7 @@ local lspconfig = {
               if vim.tbl_contains(supported_clients, client.name) then
                 local params = vim.lsp.util.make_range_params(nil, client.offset_encoding)
                 params.context = { only = { "source.organizeImports" }, diagnostics = {} }
-                local res = client.request_sync("textDocument/codeAction", params)
+                local res = client:request_sync("textDocument/codeAction", params)
 
                 for _, r in pairs(res and res.result or {}) do
                   if r.edit then
