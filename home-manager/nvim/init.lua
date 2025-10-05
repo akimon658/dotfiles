@@ -90,6 +90,7 @@ vim.filetype.add {
 
 vim.lsp.enable {
   "denols",
+  "golangci_lint_ls",
   "gopls",
   "jsonls",
   "lua_ls",
