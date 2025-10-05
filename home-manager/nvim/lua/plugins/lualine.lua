@@ -67,9 +67,11 @@ local lualine = {
           function()
             local chat_strategy = require "codecompanion.strategies.chat"
             local chat = chat_strategy.buf_get_chat(0)
+            local adapter = chat.adapter
+            local model = adapter.model
+            local model_name = model and model.name
 
-            return (type(chat.adapter.model) == "table" and chat.adapter.model.name)
-                or chat.settings.model
+            return adapter.name .. (model_name and "/" .. model_name or "")
           end,
           cond = function()
             return vim.bo.filetype == "codecompanion" and package.loaded["codecompanion"] ~= nil
