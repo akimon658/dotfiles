@@ -72,25 +72,12 @@ local lspconfig = {
     end
     local lsp_config = require "lspconfig"
 
-    ---@type string
-    local goimports_local
-    ---@type string
-    local gomod_path = vim.fn.getcwd() .. "/go.mod"
-    if vim.fn.filereadable(gomod_path) == 1 then
-      local f = io.open(gomod_path)
-
-      if f then
-        goimports_local = vim.split(f:read(), " ")[2]
-      end
-    end
-
     ---@type string[]
     local servers = {
       "bashls",
       "clangd",
       "cssls",
       "dockerls",
-      "gopls",
       "jsonls",
       "lemminx",
       "pylsp",
@@ -101,9 +88,6 @@ local lspconfig = {
     for _, lsp in ipairs(servers) do
       lsp_config[lsp].setup {
         settings = {
-          gopls = {
-            ["local"] = goimports_local,
-          },
           pylsp = {
             plugins = {
               autopep8 = { enabled = false },
