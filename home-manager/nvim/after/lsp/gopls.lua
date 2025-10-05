@@ -15,6 +15,16 @@ return {
   settings = {
     gopls = {
       ["local"] = goimports_local,
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        ignoredError = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
     },
   },
 }
