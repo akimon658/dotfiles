@@ -42,7 +42,7 @@ local lspconfig = {
 
                 for _, r in pairs(res and res.result or {}) do
                   if r.edit then
-                    local enc = (vim.lsp.get_client_by_id(client.id) or {}).offset_encodint or "utf-16"
+                    local enc = (vim.lsp.get_client_by_id(client.id) or {}).offset_encoding or "utf-16"
                     vim.lsp.util.apply_workspace_edit(r.edit, enc)
                   end
                 end
