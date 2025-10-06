@@ -12,5 +12,9 @@ return {
       end,
     },
   },
-  opts = {},
+  opts = {
+    extensions = {
+      spinner = {},
+    },
+  },
 }
