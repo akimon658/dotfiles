@@ -95,6 +95,7 @@ vim.lsp.enable {
   "jsonls",
   "lua_ls",
   "metals",
+  "rust_analyzer",
   "ts_ls",
 }
 vim.lsp.inlay_hint.enable()

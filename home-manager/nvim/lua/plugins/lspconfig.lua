@@ -81,7 +81,6 @@ local lspconfig = {
       "jsonls",
       "lemminx",
       "pylsp",
-      "rust_analyzer",
       "vacuum",
     }
 
