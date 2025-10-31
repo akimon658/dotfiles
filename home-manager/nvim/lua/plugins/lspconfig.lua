@@ -31,6 +31,7 @@ local lspconfig = {
           callback = function(args)
             local supported_clients = {
               "biome",
+              "denols",
               "gopls",
             }
 
