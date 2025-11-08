@@ -17,5 +17,12 @@ return {
       history = {},
       spinner = {},
     },
+    memory = {
+      opts = {
+        chat = {
+          enabled = true,
+        },
+      },
+    },
   },
 }
