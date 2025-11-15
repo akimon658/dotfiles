@@ -14,7 +14,15 @@ return {
   },
   opts = {
     extensions = {
-      history = {},
+      history = {
+        title_generation_opts = {
+          adapter = "copilot",
+          model = "gpt-4.1",
+        },
+      },
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+      },
       spinner = {},
     },
     memory = {
