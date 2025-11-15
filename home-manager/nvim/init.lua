@@ -97,6 +97,7 @@ vim.lsp.enable {
   "metals",
   "rust_analyzer",
   "ts_ls",
+  "wasm_language_tools",
 }
 vim.lsp.inlay_hint.enable()
 
