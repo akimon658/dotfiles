@@ -129,6 +129,10 @@ local lspconfig = {
       vim.lsp.buf.code_action,
     },
     {
+      "<leader>df",
+      vim.lsp.buf.definition,
+    },
+    {
       "<leader>h",
       vim.lsp.buf.hover,
     },
