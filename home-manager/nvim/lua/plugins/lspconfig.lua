@@ -30,7 +30,6 @@ local lspconfig = {
           group = vim.api.nvim_create_augroup("organize_imports", {}),
           callback = function(args)
             local supported_clients = {
-              "biome",
               "denols",
               "gopls",
             }
@@ -71,53 +70,6 @@ local lspconfig = {
     for _, autocmd in ipairs(autocmds) do
       util.create_autocmd(autocmd)
     end
-    local lsp_config = require "lspconfig"
-
-    ---@type string[]
-    local servers = {
-      "bashls",
-      "clangd",
-      "cssls",
-      "dockerls",
-      "jsonls",
-      "lemminx",
-      "pylsp",
-      "vacuum",
-    }
-
-    for _, lsp in ipairs(servers) do
-      lsp_config[lsp].setup {
-        settings = {
-          pylsp = {
-            plugins = {
-              autopep8 = { enabled = false },
-            },
-          },
-        },
-      }
-    end
-
-    lsp_config.powershell_es.setup {
-      bundle_path = "C:/PowerShellEditorServices",
-    }
-
-    lsp_config.tinymist.setup {
-      settings = {
-        formatterMode = "typstyle",
-      },
-    }
-
-    lsp_config.yamlls.setup {
-      filetypes = {
-        "yaml",
-        "yaml.docker-compose",
-        "yaml.gitlab",
-        "yaml.openapi", -- Added
-      },
-      settings = {
-        yaml = { keyOrdering = false },
-      },
-    }
   end,
   event = {
     event.buf_new_file,
