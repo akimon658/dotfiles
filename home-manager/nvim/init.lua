@@ -95,6 +95,7 @@ vim.lsp.enable {
   "jsonls",
   "lua_ls",
   "metals",
+  "pylsp",
   "rust_analyzer",
   "ts_ls",
   "wasm_language_tools",
