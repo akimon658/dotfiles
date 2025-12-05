@@ -89,6 +89,7 @@ vim.filetype.add {
 }
 
 vim.lsp.enable {
+  "clangd",
   "denols",
   "golangci_lint_ls",
   "gopls",
