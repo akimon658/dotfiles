@@ -15,7 +15,7 @@
 
   outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs }:
   {
-    darwinConfigurations."Nozomi" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.Nozomi = nix-darwin.lib.darwinSystem {
       modules = [
         home-manager.darwinModules.home-manager
         ./darwin
