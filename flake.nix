@@ -17,17 +17,10 @@
   {
     darwinConfigurations."Nozomi" = nix-darwin.lib.darwinSystem {
       modules = [
-        {
-          nix.settings.experimental-features = "nix-command flakes";
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          programs.fish.enable = true;
-          system = {
-            configurationRevision = self.rev or self.dirtyRev or null;
-            stateVersion = 6;
-          };
-        }
         home-manager.darwinModules.home-manager
+        ./darwin
       ];
+      specialArgs = { inherit self; };
     };
   };
 }
