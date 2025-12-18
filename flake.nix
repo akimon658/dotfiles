@@ -17,10 +17,18 @@
   {
     darwinConfigurations.Nozomi = nix-darwin.lib.darwinSystem {
       modules = [
-        home-manager.darwinModules.home-manager
         ./darwin
       ];
       specialArgs = { inherit self; };
+    };
+
+    homeConfigurations.akimon658 = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        ./home-manager
+      ];
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+      };
     };
   };
 }
