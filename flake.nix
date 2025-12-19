@@ -13,7 +13,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs }:
+  outputs = { self, home-manager, nix-darwin, nixpkgs }:
   {
     darwinConfigurations.Nozomi = nix-darwin.lib.darwinSystem {
       modules = [
