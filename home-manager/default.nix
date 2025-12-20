@@ -4,6 +4,7 @@ in {
   home = {
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
+      brewCasks.alt-tab
       unstable.gemini-cli
       nixd
     ];

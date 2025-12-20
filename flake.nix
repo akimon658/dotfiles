@@ -2,6 +2,14 @@
   description = "A flake to provision @akimon658's environment";
 
   inputs = {
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs.brew-api.follows = "brew-api";
+    };
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
@@ -14,7 +22,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, home-manager, nix-darwin, nixpkgs, nixpkgs-unstable }:
+  outputs = { self, brew-nix, home-manager, nix-darwin, nixpkgs, nixpkgs-unstable, ... }:
   {
     darwinConfigurations.Nozomi = nix-darwin.lib.darwinSystem {
       modules = [
@@ -28,6 +36,7 @@
         ./home-manager
         {
           nixpkgs.overlays = [
+            brew-nix.overlays.default
             (final: _prev: {
               unstable = import nixpkgs-unstable {
                 system = final.stdenv.hostPlatform.system;
