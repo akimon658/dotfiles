@@ -5,6 +5,7 @@ in {
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
       brewCasks.alt-tab
+      curl
       brewCasks.figma
       unstable.gemini-cli
       nixd
