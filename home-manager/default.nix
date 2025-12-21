@@ -5,7 +5,9 @@ in {
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
       brewCasks.alt-tab
-      curl
+      (curl.override {
+        websocketSupport = true;
+      })
       brewCasks.figma
       unstable.gemini-cli
       nixd
