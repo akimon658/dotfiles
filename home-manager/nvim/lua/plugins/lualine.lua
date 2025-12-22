@@ -65,8 +65,8 @@ local lualine = {
         },
         {
           function()
-            local chat_strategy = require "codecompanion.strategies.chat"
-            local chat = chat_strategy.buf_get_chat(0)
+            local chat_interaction = require "codecompanion.interactions.chat"
+            local chat = chat_interaction.buf_get_chat(0)
             local adapter = chat.adapter
             local model = adapter.model
             local model_name = model and model.name
