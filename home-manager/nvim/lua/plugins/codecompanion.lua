@@ -13,6 +13,11 @@ return {
     },
   },
   opts = {
+    interactions = {
+      chat = {
+        adapter = "gemini_cli",
+      },
+    },
     extensions = {
       history = {
         title_generation_opts = {
