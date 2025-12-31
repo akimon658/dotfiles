@@ -22,6 +22,11 @@ in {
     stateVersion = "25.11";
     username = username;
   };
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ./wezterm/wezterm.lua;
+    package = pkgs.brewCasks.wezterm;
+  };
   xdg.configFile = {
     "fish/config.fish".source = ./xdg_config/fish/config.fish;
   };
