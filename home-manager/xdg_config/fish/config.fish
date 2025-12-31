@@ -40,5 +40,6 @@ if status is-interactive
     return 1
   end
 
+  fish_config theme choose ayu
   starship init fish | source
 end
