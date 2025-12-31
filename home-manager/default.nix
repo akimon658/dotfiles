@@ -28,6 +28,6 @@ in {
     package = pkgs.brewCasks.wezterm;
   };
   xdg.configFile = {
-    "fish/config.fish".source = ./xdg_config/fish/config.fish;
+    "fish/config.fish".source = ./fish/config.fish;
   };
 }
