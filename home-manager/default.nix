@@ -9,7 +9,7 @@ in {
         websocketSupport = true;
       })
       brewCasks.figma
-      fish
+      unstable.fish
       unstable.gemini-cli
       nixd
       (brewCasks.unity-hub.overrideAttrs (oldAttrs: {
@@ -24,6 +24,5 @@ in {
   };
   xdg.configFile = {
     "fish/config.fish".source = ./xdg_config/fish/config.fish;
-    "fish/fish_variables".source = ./xdg_config/fish/fish_variables;
   };
 }
