@@ -1,3 +1,5 @@
+-- https://zenn.dev/vim_jp/articles/c96e9b1bdb9241
+vim.env.XDG_STATE_HOME = os.getenv "TMPDIR" or "/tmp"
 vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
