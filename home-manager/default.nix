@@ -22,10 +22,19 @@ in {
     stateVersion = "25.11";
     username = username;
   };
-  programs.wezterm = {
+  programs.ghostty = {
     enable = true;
-    extraConfig = builtins.readFile ./wezterm/wezterm.lua;
-    package = pkgs.brewCasks.wezterm;
+    package = pkgs.brewCasks.ghostty;
+    settings = {
+      background-opacity = 0.8;
+      command = "${pkgs.unstable.fish}/bin/fish";
+      font-family = [
+        "Roboto Mono"
+        "Noto Sans JP"
+      ];
+      macos-titlebar-style = "tabs";
+      theme = "dark:One Double Dark, light:One Double Light";
+    };
   };
   xdg.configFile = {
     "fish/config.fish".source = ./fish/config.fish;
