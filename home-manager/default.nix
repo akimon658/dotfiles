@@ -2,6 +2,7 @@
   username = "akimon658";
 in {
   home = {
+    file.".hushlogin".text = "";
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
       brewCasks.alt-tab
