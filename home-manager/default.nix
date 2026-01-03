@@ -26,7 +26,7 @@ in {
     enable = true;
     package = pkgs.brewCasks.ghostty;
     settings = {
-      background-opacity = 0.8;
+      background-opacity = 0.9;
       command = "${pkgs.unstable.fish}/bin/fish";
       font-family = [
         "Roboto Mono"
