@@ -20,6 +20,9 @@ in {
           hash = "sha256-9rR97hWa3UyxXvuH2AoM70ttGt9udRd3CDy5Uj7DNgI="; # 3.15.4
         };
       }))
+      (yt-dlp.override {
+        rtmpSupport = false;
+      })
     ];
     stateVersion = "25.11";
     username = username;
