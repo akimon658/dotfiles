@@ -20,9 +20,11 @@ return {
     },
     extensions = {
       history = {
-        title_generation_opts = {
-          adapter = "copilot",
-          model = "gpt-4.1",
+        opts = {
+          title_generation_opts = {
+            adapter = "copilot",
+            model = "gpt-4.1",
+          },
         },
       },
       mcphub = {
