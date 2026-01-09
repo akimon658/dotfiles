@@ -3,6 +3,7 @@ local M = {
   buf_read_post = "BufReadPost",
   buf_read_pre = "BufReadPre",
   buf_write_pre = "BufWritePre",
+  file_type = "FileType",
   insert_enter = "InsertEnter",
   lsp_attach = "LspAttach",
   term_open = "TermOpen",
