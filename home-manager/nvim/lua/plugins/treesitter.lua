@@ -8,7 +8,9 @@ local treesitter = {
   config = function()
     vim.api.nvim_create_autocmd(require "vim_event".file_type, {
       pattern = {
+        "asm",
         "gitcommit",
+        "markdown",
         "nix",
         "python",
         "rust",
