@@ -13,6 +13,7 @@ in {
       unstable.fish
       unstable.gemini-cli
       nixd
+      thunderbird
       tree-sitter
       (brewCasks.unity-hub.overrideAttrs (oldAttrs: {
         src = pkgs.fetchurl {
