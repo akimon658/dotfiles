@@ -2,7 +2,12 @@
   username = "akimon658";
 in {
   home = {
-    file.".hushlogin".text = "";
+    file = {
+      ".hushlogin".text = "";
+      # I primarily use fish, but Antigravity uses zsh,
+      # so place minimal config containing PATH setup.
+      ".zshrc".source = ./zsh/.zshrc;
+    };
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
       brewCasks.alt-tab
@@ -45,5 +50,6 @@ in {
   };
   xdg.configFile = {
     "fish/config.fish".source = ./fish/config.fish;
+    "zsh/.zshrc".source = ./zsh/.zshrc;
   };
 }
