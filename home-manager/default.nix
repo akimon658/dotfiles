@@ -9,6 +9,7 @@ in {
       (curl.override {
         websocketSupport = true;
       })
+      antigravity
       brewCasks.figma
       unstable.fish
       unstable.gemini-cli

@@ -46,6 +46,7 @@
         }
       ];
       pkgs = import nixpkgs {
+        config.allowUnfree = true;
         system = "aarch64-darwin";
       };
     };
