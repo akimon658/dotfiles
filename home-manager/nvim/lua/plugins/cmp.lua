@@ -14,9 +14,7 @@ local cmp = {
     local bordered_window = cmp.config.window.bordered()
 
     cmp.setup {
-      formatting = { format = require "lspkind".cmp_format({
-        mode = 'text' -- Do not show icons as nvim-cmp already does
-      }) },
+      formatting = { format = require "lspkind".cmp_format() },
       mapping = {
         ["<C-n>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
