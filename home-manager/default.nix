@@ -18,6 +18,7 @@ in {
       brewCasks.figma
       unstable.fish
       unstable.gemini-cli
+      gh
       nixd
       thunderbird
       tree-sitter
