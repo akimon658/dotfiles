@@ -101,6 +101,7 @@ vim.lsp.enable {
   "nixd",
   "pylsp",
   "rust_analyzer",
+  "tinymist",
   "ts_ls",
   "wasm_language_tools",
 }
