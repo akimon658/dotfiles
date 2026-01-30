@@ -20,6 +20,7 @@ in {
       unstable.fish
       unstable.gemini-cli
       gh
+      neovim
       nixd
       thunderbird
       tree-sitter
