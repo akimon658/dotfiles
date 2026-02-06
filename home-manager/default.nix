@@ -20,6 +20,7 @@ in {
       unstable.fish
       unstable.gemini-cli
       gh
+      monitorcontrol
       neovim
       nixd
       thunderbird
