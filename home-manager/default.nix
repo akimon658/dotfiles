@@ -23,6 +23,7 @@ in {
       monitorcontrol
       neovim
       nixd
+      nodejs
       thunderbird
       tree-sitter
       (brewCasks.unity-hub.overrideAttrs (oldAttrs: {
