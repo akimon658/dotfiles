@@ -24,6 +24,7 @@ in {
       unstable.fish
       unstable.gemini-cli
       gh
+      lua-language-server
       neovim
       nixd
       nodejs
