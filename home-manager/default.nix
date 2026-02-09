@@ -3,6 +3,10 @@
 in {
   home = {
     file = {
+      ".config/nvim" = {
+        recursive = true;
+        source = ./nvim;
+      };
       ".hushlogin".text = "";
       ".local/share/cargo/config.toml".source = ./cargo/config.toml;
       # I primarily use fish, but Antigravity uses zsh,
