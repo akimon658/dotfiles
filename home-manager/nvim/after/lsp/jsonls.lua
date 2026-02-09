@@ -1,4 +1,10 @@
+---@type vim.lsp.Config
 return {
+  filetypes = {
+    "json",
+    "jsonc",
+    "json5", -- Added
+  },
   settings = {
     json = {
       schemas = require "schemastore".json.schemas(),

@@ -5,6 +5,7 @@ local ftmap = {
   gitcommit = "Git Commit",
   html = "HTML",
   json = "JSON",
+  json5 = "JSON5",
   ["markdown.mdx"] = "MDX",
   sql = "SQL",
   toml = "TOML",
