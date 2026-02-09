@@ -37,6 +37,7 @@ in {
         };
       }))
       vscode-langservers-extracted
+      yaml-language-server
       (yt-dlp.override {
         rtmpSupport = false;
       })
