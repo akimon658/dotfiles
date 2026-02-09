@@ -18,7 +18,6 @@
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
   "lspkind.nvim": { "branch": "master", "commit": "c7274c48137396526b59d86232eabcdc7fed8a32" },
   "lualine.nvim": { "branch": "master", "commit": "47f91c416daef12db467145e16bed5bbfe00add8" },
-  "mcphub.nvim": { "branch": "main", "commit": "7cd5db330f41b7bae02b2d6202218a061c3ebc1f" },
   "neo-tree.nvim": { "branch": "main", "commit": "f3df514fff2bdd4318127c40470984137f87b62e" },
   "neogit": { "branch": "master", "commit": "73870229977fdd8747025820e15e98cfde787b9c" },
   "nui.nvim": { "branch": "main", "commit": "f535005e6ad1016383f24e39559833759453564e" },
