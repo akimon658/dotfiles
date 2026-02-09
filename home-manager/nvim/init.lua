@@ -103,7 +103,6 @@ vim.lsp.enable {
   "rust_analyzer",
   "tinymist",
   "ts_ls",
-  "wasm_language_tools",
 }
 vim.lsp.inlay_hint.enable()
 
