@@ -27,9 +27,6 @@ return {
           },
         },
       },
-      mcphub = {
-        callback = "mcphub.extensions.codecompanion",
-      },
       spinner = {},
     },
     memory = {
