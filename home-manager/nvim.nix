@@ -122,7 +122,6 @@
       "lua/custom/lualine-setup.lua".source = ./nvim/lua/custom/lualine-setup.lua;
       "lua/custom/lsp-autocmds.lua".source = ./nvim/lua/custom/lsp-autocmds.lua;
       "lua/custom/vscode-setup.lua".source = ./nvim/lua/custom/vscode-setup.lua;
-      "lua/custom/treesitter-setup.lua".source = ./nvim/lua/custom/treesitter-setup.lua;
       "after/ftplugin/typst.lua".source = ./nvim/after/ftplugin/typst.lua;
     };
     colorscheme = "vscode";
@@ -189,7 +188,7 @@
           }
         ];
         settings = {
-          interactions.chat.adapter = "gemini_cli";
+          strategies.adapter = "gemini_cli";
           extensions = {
             history.opts.title_generation_opts = {
               adapter = "copilot";
@@ -338,7 +337,23 @@
       treesitter = {
         enable = true;
         lazyLoad.settings.event = [ "BufReadPre" ];
-        luaConfig.post = ''require("custom.treesitter-setup")'';
+        settings = {
+          indent.enable = true;
+          highlight.enable = true;
+        };
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          asm
+          gitcommit
+          markdown
+          markdown_inline
+          nix
+          python
+          rust
+          sql
+          tsx
+          typescript
+          yaml
+        ];
       };
       treesitter-context = {
         enable = true;

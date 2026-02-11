@@ -59,7 +59,7 @@ require "lualine".setup {
       },
       {
         function()
-          local chat_interaction = require "codecompanion.interactions.chat"
+          local chat_interaction = require "codecompanion.strategies.chat"
           local chat = chat_interaction.buf_get_chat(0)
           local adapter = chat.adapter
           local model = adapter.model
