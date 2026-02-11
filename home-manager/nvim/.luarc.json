@@ -9,9 +9,7 @@
   },
   "workspace": {
     "library": [
-      "~/.nix-profile/share/nvim/runtime/lua",
-      "~/.config/nvim/lua",
-      "~/.local/share/nvim/lazy"
+      "~/.nix-profile/share/nvim/runtime/lua"
     ]
   }
 }

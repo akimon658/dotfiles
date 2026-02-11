@@ -1,12 +1,10 @@
 { pkgs, ... }: let
   username = "akimon658";
 in {
+  imports = [ ./nvim.nix ];
+
   home = {
     file = {
-      ".config/nvim" = {
-        recursive = true;
-        source = ./nvim;
-      };
       ".hushlogin".text = "";
       ".local/share/cargo/config.toml".source = ./cargo/config.toml;
       # I primarily use fish, but Antigravity uses zsh,
@@ -24,20 +22,14 @@ in {
       unstable.fish
       unstable.gemini-cli
       gh
-      lua-language-server
-      neovim
-      nixd
       nodejs
       thunderbird
-      tree-sitter
       (brewCasks.unity-hub.overrideAttrs (oldAttrs: {
         src = pkgs.fetchurl {
           url = builtins.head oldAttrs.src.urls;
           hash = "sha256-9rR97hWa3UyxXvuH2AoM70ttGt9udRd3CDy5Uj7DNgI="; # 3.15.4
         };
       }))
-      vscode-langservers-extracted
-      yaml-language-server
       (yt-dlp.override {
         rtmpSupport = false;
       })

@@ -20,9 +20,13 @@
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixvim = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim/nixos-25.11";
+    };
   };
 
-  outputs = { self, brew-nix, home-manager, nix-darwin, nixpkgs, nixpkgs-unstable, ... }:
+  outputs = { self, brew-nix, home-manager, nix-darwin, nixpkgs, nixpkgs-unstable, nixvim, ... }:
   {
     darwinConfigurations.Nozomi = nix-darwin.lib.darwinSystem {
       modules = [
@@ -34,6 +38,7 @@
     homeConfigurations.akimon658 = home-manager.lib.homeManagerConfiguration {
       modules = [
         ./home-manager
+        nixvim.homeModules.nixvim
         {
           nixpkgs.overlays = [
             brew-nix.overlays.default
