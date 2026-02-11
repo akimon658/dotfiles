@@ -57,6 +57,7 @@ in {
       settings = {
         core.editor = "nvim";
         ghq.root = "~/Google Drive/マイドライブ/ghq";
+        gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         help.autocorrect = "50";
         user = {
           name = "Takumi Akimoto";
