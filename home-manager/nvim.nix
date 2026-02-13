@@ -282,6 +282,7 @@
         enable = true;
         lazyLoad.settings.ft = [ "codecompanion" "markdown" ];
         settings = {
+          file_types = [ "codecompanion" "markdown" ];
           heading = {
             backgrounds = [ "None" "None" "None" "None" "None" "None" ];
             icons = [ "# " "## " "### " "#### " "##### " "###### " ];
