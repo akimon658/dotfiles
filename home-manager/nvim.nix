@@ -353,6 +353,7 @@
         };
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           asm
+          dockerfile
           gitcommit
           go
           markdown
