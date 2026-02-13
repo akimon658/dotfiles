@@ -354,6 +354,7 @@
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           asm
           gitcommit
+          go
           markdown
           markdown_inline
           nix
