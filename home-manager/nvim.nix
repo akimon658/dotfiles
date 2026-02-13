@@ -30,7 +30,7 @@
     highlightOverride = {
       CursorLine = { bg = "#444444"; };
     };
-    diagnostics = {
+    diagnostic.settings = {
       signs = {
         text = {
           "ERROR" = "";
