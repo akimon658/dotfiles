@@ -18,6 +18,8 @@ in {
         websocketSupport = true;
       })
       antigravity
+      codex
+      codex-acp
       brewCasks.figma
       unstable.fish
       unstable.gemini-cli

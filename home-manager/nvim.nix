@@ -188,7 +188,16 @@
           }
         ];
         settings = {
-          strategies.adapter = "gemini_cli";
+          strategies.chat.adapter = "gemini_cli";
+          adapters.acp.codex.__raw = ''
+            function()
+              return require "codecompanion.adapters".extend("codex", {
+                defaults = {
+                  auth_method = "chatgpt"
+                },
+              })
+            end
+          '';
           extensions = {
             history.opts.title_generation_opts = {
               adapter = "copilot";
