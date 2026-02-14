@@ -430,6 +430,7 @@
               };
             };
           };
+          docker_language_server.enable = true;
           golangci_lint_ls.enable = true;
           gopls = {
             enable = true;
