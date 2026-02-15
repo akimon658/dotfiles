@@ -76,7 +76,11 @@ in {
         signByDefault = true;
         signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
-      ignores = [ ".DS_Store" ];
+      ignores = [
+        ".direnv"
+        ".DS_Store"
+        ".envrc"
+      ];
     };
   };
   xdg.configFile = {
