@@ -24,6 +24,7 @@ in {
       unstable.fish
       unstable.gemini-cli
       gh
+      gopls # To use with Antigravity's Go extension
       nodejs
       thunderbird
       (brewCasks.unity-hub.overrideAttrs (oldAttrs: {
