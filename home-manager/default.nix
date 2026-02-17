@@ -20,6 +20,9 @@ in {
       antigravity
       codex
       codex-acp
+      (ffmpeg-headless.override {
+        buildFfprobe = false;
+      })
       brewCasks.figma
       unstable.fish
       unstable.gemini-cli
