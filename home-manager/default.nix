@@ -24,7 +24,6 @@ in {
         buildFfprobe = false;
       })
       brewCasks.figma
-      unstable.fish
       unstable.gemini-cli
       gh
       gopls # To use with Antigravity's Go extension
@@ -40,6 +39,9 @@ in {
         rtmpSupport = false;
       })
     ];
+    sessionVariables = {
+      GOCACHE = "/tmp/go-build";
+    };
     stateVersion = "25.11";
     username = username;
   };
@@ -47,6 +49,11 @@ in {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    fish = {
+      enable = true;
+      loginShellInit = builtins.readFile ./fish/config.fish;
+      package = pkgs.unstable.fish; # v4.3+ to get the auto theme support
     };
     ghostty = {
       enable = true;
@@ -88,7 +95,6 @@ in {
     };
   };
   xdg.configFile = {
-    "fish/config.fish".source = ./fish/config.fish;
     "zsh/.zshrc".source = ./zsh/.zshrc;
   };
 }
