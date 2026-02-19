@@ -7,9 +7,6 @@ in {
     file = {
       ".hushlogin".text = "";
       ".local/share/cargo/config.toml".source = ./cargo/config.toml;
-      # I primarily use fish, but Antigravity uses zsh,
-      # so place minimal config containing PATH setup.
-      ".zshrc".source = ./zsh/.zshrc;
     };
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
@@ -93,8 +90,5 @@ in {
         ".envrc"
       ];
     };
-  };
-  xdg.configFile = {
-    "zsh/.zshrc".source = ./zsh/.zshrc;
   };
 }
