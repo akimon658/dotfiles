@@ -11,7 +11,6 @@ in {
     homeDirectory = "/Users/${username}";
     packages = with pkgs; [
       brewCasks.alt-tab
-      appflowy
       (curl.override {
         websocketSupport = true;
       })
