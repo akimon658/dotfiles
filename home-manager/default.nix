@@ -17,6 +17,7 @@ in {
       antigravity
       codex
       codex-acp
+      deno
       (ffmpeg-headless.override {
         buildFfprobe = false;
       })
