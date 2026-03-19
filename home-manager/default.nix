@@ -55,7 +55,7 @@ in {
     };
     ghostty = {
       enable = true;
-      package = pkgs.brewCasks.ghostty;
+      package = pkgs.ghostty-bin;
       settings = {
         background-opacity = 0.9;
         command = "${pkgs.unstable.fish}/bin/fish";
