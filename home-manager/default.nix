@@ -76,7 +76,7 @@ in {
         help.autocorrect = "50";
         user = {
           name = "Takumi Akimoto";
-          email = "81888693+akimon658@users.noreply.github.com";
+          email = "noreply@akimo.dev";
         };
       };
       signing = {
