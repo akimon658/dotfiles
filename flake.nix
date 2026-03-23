@@ -44,6 +44,7 @@
             brew-nix.overlays.default
             (final: _prev: {
               unstable = import nixpkgs-unstable {
+                  config.allowUnfree = true;
                 system = final.stdenv.hostPlatform.system;
               };
             })

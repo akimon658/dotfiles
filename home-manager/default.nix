@@ -44,6 +44,17 @@ in {
     username = username;
   };
   programs = {
+    claude-code = {
+      enable = true;
+      package = pkgs.unstable.claude-code;
+      settings = {
+        enabledPlugins."gopls-lsp@claude-plugins-official" = true;
+        statusLine = {
+          type = "command";
+          command = ''jq -r '"Context: \(.context_window.used_percentage // 0 | tostring | split(".") | .[0])% used | Model: \(.model.display_name)"' '';
+        };
+      };
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
