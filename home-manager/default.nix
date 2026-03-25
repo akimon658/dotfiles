@@ -22,6 +22,7 @@ in {
         buildFfprobe = false;
       })
       brewCasks.figma
+      firefox
       unstable.gemini-cli
       gh
       gopls # To use with Antigravity's Go extension
