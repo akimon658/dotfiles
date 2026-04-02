@@ -37,6 +37,7 @@ in {
       (yt-dlp.override {
         rtmpSupport = false;
       })
+      brewCasks.zoom
     ];
     sessionVariables = {
       GOCACHE = "/tmp/go-build";
