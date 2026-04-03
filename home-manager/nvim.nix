@@ -431,7 +431,11 @@
             };
           };
           docker_language_server.enable = true;
-          golangci_lint_ls.enable = true;
+          golangci_lint_ls = {
+            enable = true;
+            rootMarkers = [ ".golangci.yml" ".golangci.yaml" ".golangci.toml" ".golangci.json" ];
+            extraOptions.workspace_required = true;
+          };
           gopls = {
             enable = true;
             settings.gopls = {
