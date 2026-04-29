@@ -359,6 +359,7 @@
           markdown
           markdown_inline
           nix
+          prisma
           python
           rust
           sql
@@ -477,6 +478,10 @@
             };
           };
           nixd.enable = true;
+          prismals = {
+            enable = true;
+            package = pkgs.prisma-language-server;
+          };
           pylsp.enable = true;
           rust_analyzer = {
             enable = true;
