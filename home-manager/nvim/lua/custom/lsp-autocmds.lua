@@ -39,13 +39,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   pattern = any_pattern,
 })
-
-vim.api.nvim_create_autocmd("CursorHold", {
-  group = vim.api.nvim_create_augroup("diagnostics_hover", {}),
-  callback = function()
-    if vim.diagnostic.is_enabled() then
-      vim.diagnostic.open_float { focusable = false }
-    end
-  end,
-  pattern = any_pattern,
-})

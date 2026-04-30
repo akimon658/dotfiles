@@ -39,6 +39,7 @@
           "HINT" = "";
         };
       };
+      virtual_lines.current_line = true;
     };
     keymaps = [
       {
