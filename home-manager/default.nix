@@ -116,6 +116,7 @@ in {
             "$git_branch"
             "$git_status"
             "[](fg:#394260 bg:#212736)"
+            "$deno"
             "$nodejs"
             "$rust"
             "$golang"
@@ -125,6 +126,11 @@ in {
             "$time"
             "[ ](fg:#1d2230)"
           ] + "\n$character";
+        deno = {
+          symbol = "";
+          style = "bg:#212736";
+          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+        };
         directory = {
           style = "fg:#e3e5e5 bg:#769ff0";
           format = "[ $path ]($style)";
@@ -155,6 +161,13 @@ in {
           symbol = "";
           style = "bg:#212736";
           format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          # Exclude .js and .ts from default detaction
+          detect_extensions = [
+            "mjs"
+            "cjs"
+            "mts"
+            "cts"
+          ];
         };
         rust = {
           symbol = "";
